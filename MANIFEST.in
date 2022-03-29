@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include masar_soqoor *.css
+recursive-include masar_soqoor *.csv
+recursive-include masar_soqoor *.html
+recursive-include masar_soqoor *.ico
+recursive-include masar_soqoor *.js
+recursive-include masar_soqoor *.json
+recursive-include masar_soqoor *.md
+recursive-include masar_soqoor *.png
+recursive-include masar_soqoor *.py
+recursive-include masar_soqoor *.svg
+recursive-include masar_soqoor *.txt
+recursive-exclude masar_soqoor *.pyc
