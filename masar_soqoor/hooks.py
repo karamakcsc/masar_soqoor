@@ -178,4 +178,14 @@ user_data_fields = [
 # auth_hooks = [
 # 	"masar_soqoor.auth.validate"
 # ]
+fixtures = [
+    {"dt": "Custom Field", "filters": [
+        [
+            "name", "in", [
+    			"Account-old_account_number",
+				"Item-item_name_ar"
 
+                  ]
+        ]
+    ]}
+]
