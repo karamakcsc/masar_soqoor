@@ -183,7 +183,17 @@ fixtures = [
         [
             "name", "in", [
     			"Account-old_account_number",
-				"Item-item_name_ar"
+				"Item-item_name_ar",
+				"Purchase Order-supplier_tax_id",
+				"Purchase Order-reference_no",
+				"Purchase Order-reference_date",
+				"Purchase Invoice-reference_no",
+				"Purchase Invoice-reference_date",
+				"Purchase Invoice-section_break_19",
+				"Purchase Invoice-comments",
+				"Purchase Order-section_break_27",
+				"Purchase Order-section_break_27"
+
 
                   ]
         ]
