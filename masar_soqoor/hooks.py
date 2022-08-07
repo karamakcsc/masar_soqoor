@@ -193,6 +193,7 @@ fixtures = [
 				"Purchase Invoice-comments",
 				"Purchase Order-section_break_27",
 				"Purchase Order-comments",
+				"Item Attribute Value-abbr_ar",
 
 
                   ]
