@@ -102,6 +102,10 @@ app_license = "MIT"
 # 		"on_trash": "method"
 #	}
 # }
+doctype_js = {
+   "Sales Invoice" : "custom/sales_invoice/sales_invoice.js",
+   "Payment Entry" : "custom/payment_entry/payment_entry.js"
+ }
 
 # Scheduled Tasks
 # ---------------
@@ -195,8 +199,7 @@ fixtures = [
 				"Purchase Order-comments",
 				"Item Attribute Value-abbr_ar",
 				#"Item-kind",
-				"Sales Invoice-payment_type",
-				"Sales Invoice-customer_tax"
+				"Sales Invoice-payment_type"
 
 
                   ]
