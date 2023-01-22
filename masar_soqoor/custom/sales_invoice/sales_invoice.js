@@ -27,7 +27,7 @@ frappe.ui.form.on("Sales Invoice", {
 });
 
 frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
-       var df=frappe.meta.get_docfield("Sales Invoice", "naming_series",frm.doc.name);
+       var df=frappe.meta.get_docfield("Sales Invoice", "naming_series",frm.doc.name);s
        df.read_only=1;
        var df=frappe.meta.get_docfield("Sales Invoice", "pos_profile",frm.doc.name);
        df.read_only=1;
