@@ -199,7 +199,16 @@ fixtures = [
 				"Purchase Order-comments",
 				"Item Attribute Value-abbr_ar",
 				#"Item-kind",
-				"Sales Invoice-payment_type"
+				"Sales Invoice-payment_type",
+                "Journal Entry Account-employee",
+                "Journal Entry Account-vehicle",
+                "Journal Entry Account-supplier_name",
+                "Journal Entry Account-supplier_tax",
+                "Journal Entry Account-supplier_invoice_no",
+                "Journal Entry Account-supplier_invoice_date",
+                "Journal Entry Account-service_type",
+                "Payment Entry-employee",
+                "Payment Entry-vehicle"
 
 
                   ]
