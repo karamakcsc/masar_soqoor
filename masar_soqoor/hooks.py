@@ -208,7 +208,8 @@ fixtures = [
                 "Journal Entry Account-supplier_invoice_date",
                 "Journal Entry Account-service_type",
                 "Payment Entry-employee",
-                "Payment Entry-vehicle"
+                "Payment Entry-vehicle",
+                "Payment Entry-paid_from_des"
 
 
                   ]
