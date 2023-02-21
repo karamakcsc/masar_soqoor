@@ -16,7 +16,7 @@ def get_data(filters):
 	conditions = " AND 1=1 "
 	if(filters.get('jv_no')):conditions += f" AND tje.name LIKE '%{filters.get('jv_no')}' "
 	if(filters.get('account')):conditions += f" AND tjea.account='{filters.get('account')}' "
-	if(filters.get('supplier_name')):conditions += f" AND tjea.party LIKE '%{filters.get('supplier_name')}' "
+	if(filters.get('supplier_name')):conditions += f" AND tjea.against_account LIKE '%{filters.get('supplier_name')}' "
 	#if(filters.get('customer_sub')):conditions += f" AND tsi.customer_sub LIKE '%{filters.get('customer_sub')}' "
 	#if(filters.get('sales_person')):conditions += f" AND tst.sales_person='{filters.get('sales_person')}' "
 	#if(filters.get('is_return')):conditions += f" AND tsi.is_return='{filters.get('is_return')}' "
