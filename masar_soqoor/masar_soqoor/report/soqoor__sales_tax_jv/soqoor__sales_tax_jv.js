@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
-frappe.query_reports["Soqoor Purchase TAX JV"] = {
+frappe.query_reports["Soqoor  Sales TAX JV"] = {
 	"filters": [
 							{
 								"fieldname": "jv_no",
