@@ -36,14 +36,14 @@ frappe.query_reports["Soqoor Purchase TAX JV"] = {
 								"width": 100,
 								"reqd": 0,
 							},
-							{
-								"fieldname": "account",
-								"label": __("Account Name"),
-								"fieldtype": "Link",
-								"options": "Account",
-								"width": 100,
-								"reqd": 0,
-							},
+							// {
+							// 	"fieldname": "account",
+							// 	"label": __("Account Name"),
+							// 	"fieldtype": "Link",
+							// 	"options": "Account",
+							// 	"width": 100,
+							// 	"reqd": 0,
+							// },
 							{
 								"fieldname": "tax_category",
 								"label": __("Tax Category"),

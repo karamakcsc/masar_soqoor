@@ -20,7 +20,7 @@ def get_data(filters):
 	#if(filters.get('customer_sub')):conditions += f" AND tsi.customer_sub LIKE '%{filters.get('customer_sub')}' "
 	#if(filters.get('sales_person')):conditions += f" AND tst.sales_person='{filters.get('sales_person')}' "
 	#if(filters.get('is_return')):conditions += f" AND tsi.is_return='{filters.get('is_return')}' "
-	if(filters.get('tax_category')):conditions += f" AND tje.tax_category='{filters.get('tax_category')}' "
+	if(filters.get('tax_category')):conditions += f" AND tjea.tax_category='{filters.get('tax_category')}' "
 
 	#SQL Query
 	data = frappe.db.sql(f"""Select tje.name AS `Voucher`, tje.posting_date AS `Posting Date`,tjea.account AS `Account`, 
