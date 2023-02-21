@@ -209,7 +209,9 @@ fixtures = [
                 "Journal Entry Account-service_type",
                 "Payment Entry-employee",
                 "Payment Entry-vehicle",
-                "Payment Entry-paid_from_des"
+                "Payment Entry-paid_from_des",
+				"Journal Entry Account-tax_base_amount",
+				"Journal Entry Account-tax_category"
 
 
                   ]
