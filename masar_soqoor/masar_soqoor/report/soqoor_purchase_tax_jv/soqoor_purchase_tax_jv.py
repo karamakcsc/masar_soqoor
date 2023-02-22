@@ -51,6 +51,6 @@ def get_columns():
 	   "Service Type: Data:200",
 	   "Tax Base Amount: Data:200",
 	   "Tax Amount: Data:200",
-	   "Tax Group: Data:200",
+	   "Tax Group: Data:200"
 	   #"Status:150"
 	]
