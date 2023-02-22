@@ -15,7 +15,7 @@ def get_data(filters):
 	#Conditions
 	conditions = " AND 1=1 "
 	if(filters.get('jv_no')):conditions += f" AND tje.name LIKE '%{filters.get('jv_no')}' "
-	if(filters.get('account')):conditions += f" AND tjea.account='{filters.get('account')}' "
+	#if(filters.get('account')):conditions += f" AND tjea.account='{filters.get('account')}' "
 	if(filters.get('supplier_name')):conditions += f" AND tjea.against_account LIKE '%{filters.get('supplier_name')}' "
 	#if(filters.get('customer_sub')):conditions += f" AND tsi.customer_sub LIKE '%{filters.get('customer_sub')}' "
 	#if(filters.get('sales_person')):conditions += f" AND tst.sales_person='{filters.get('sales_person')}' "
@@ -25,8 +25,8 @@ def get_data(filters):
 	#SQL Query
 	data = frappe.db.sql(f"""Select tje.name AS `Voucher`, tje.posting_date AS `Posting Date`,tjea.account AS `Account`, 
 							tjea.against_account AS `Invoice Account`,tjea.supplier_name AS `Supplier Name`, 
-							tjea.supplier_tax AS `VAT No.`, tjea.supplier_invoice_date AS `Supplier Invoice Date`,
-							tjea.service_type AS `Service Type`, tjea.tax_base_amount AS `Tax Base Amount`, tjea.debit AS `Tax Amount`,tjea.tax_category AS `Tax Category`, tjea.supplier_invoice_no AS `Supplier Invoice No`
+							tjea.supplier_tax AS `VAT No.`, tjea.supplier_invoice_no AS `Supplier Invoice No`, tjea.supplier_invoice_date AS `Supplier Invoice Date`,
+							tjea.service_type AS `Service Type`, tjea.tax_base_amount AS `Tax Base Amount`, tjea.debit AS `Tax Amount`,tjea.tax_category AS `Tax Group`
 							
 
 							from `tabJournal Entry` tje 
@@ -40,17 +40,17 @@ def get_data(filters):
 
 def get_columns():
 	return [
-	   "Name: Link/Journal Entry:200",
+	   "Voucher: Link/Journal Entry:200",
 	   "Posting Date: Date/Posting Date:150",
 	   "Account: Data:300",
 	   "Invoice Account: Link/Supplier:200",
 	   "Supplier Name: Link/Supplier:200",
-	   "VAT No.: Data:100",
+	   "VAT No.: Data:200",
+	   "Supplier Invoice No: Data:200",
 	   "Supplier Invoice Date:  Data:200",
 	   "Service Type: Data:200",
 	   "Tax Base Amount: Data:200",
 	   "Tax Amount: Data:200",
-	   "Tax Category: Data:200",
-	   "Supplier Invoice No: Data:200"
+	   "Tax Group: Data:200",
 	   #"Status:150"
 	]

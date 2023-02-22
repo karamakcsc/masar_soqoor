@@ -46,7 +46,7 @@ frappe.query_reports["Soqoor Purchase TAX JV"] = {
 							// },
 							{
 								"fieldname": "tax_category",
-								"label": __("Tax Category"),
+								"label": __("Tax Group"),
 								"fieldtype": "Link",
 								"options": "Tax Category",
 								"width": 100,
