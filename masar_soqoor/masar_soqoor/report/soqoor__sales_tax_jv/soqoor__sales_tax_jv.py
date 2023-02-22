@@ -23,7 +23,7 @@ def get_data(filters):
 	if(filters.get('tax_category')):conditions += f" AND tpi.tax_category='{filters.get('tax_category')}' "
 
 	#SQL Query
-	data = frappe.db.sql(f"""SELECT tpi.name AS `Voucher`, tpi.posting_date AS `Posting Date`,tptac.account_head AS `Node`, 
+	data = frappe.db.sql(f"""SELECT tpi.name AS `Voucher`, tpi.posting_date AS `Posting Date`,tptac.account_head AS `Account`, 
 								tpi.supplier AS `Invoice Account`, tpi.supplier_name AS `Supplier Name`, tpi.tax_id AS `VAT No.`,
 								tpi.reference_no AS `Supplier Invoice No`, tpi.reference_date AS `Supplier Invoice Date`, 
 								tpii.item_group AS `Service Type`, 
@@ -46,7 +46,7 @@ def get_columns():
 	   "Invoice Account: Link/Supplier:200",
 	   "Supplier Name: Link/Supplier:200",
 	   "VAT No.: Data:200",
-	   "Supplier Invoice No: Data:200"
+	   "Supplier Invoice No: Data:200",
 	   "Supplier Invoice Date:  Data:200",
 	   "Service Type: Data:200",
 	   "Tax Base Amount: Data:200",
