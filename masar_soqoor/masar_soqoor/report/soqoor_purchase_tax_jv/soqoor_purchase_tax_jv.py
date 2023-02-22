@@ -44,7 +44,7 @@ def get_columns():
 	   "Posting Date: Date/Posting Date:150",
 	   "Account: Data:300",
 	   "Invoice Account: Link/Supplier:200",
-	   "Supplier Name: Link/Supplier:200",
+	   "Supplier Name: Data:200",
 	   "VAT No.: Data:200",
 	   "Supplier Invoice No: Data:200",
 	   "Supplier Invoice Date:  Data:200",
