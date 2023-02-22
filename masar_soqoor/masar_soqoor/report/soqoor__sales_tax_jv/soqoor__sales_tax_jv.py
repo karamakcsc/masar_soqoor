@@ -27,7 +27,7 @@ def get_data(filters):
 								tpi.supplier AS `Invoice Account`, tpi.supplier_name AS `Supplier Name`, tpi.tax_id AS `VAT No.`,
 								tpi.reference_no AS `Supplier Invoice No`, tpi.reference_date AS `Supplier Invoice Date`, 
 								tpii.item_group AS `Service Type`, 
-								tpii.amount AS `Tax Base Amount`, tptac.tax_amount AS `Tax Amount`, tpi.tax_category AS `Tax Group`, 
+								tpi.total AS `Tax Base Amount`, tptac.tax_amount AS `Tax Amount`, tpi.tax_category AS `Tax Group`, 
 								tpi.currency AS `Currency Code`
 								
 								from `tabPurchase Invoice` tpi 
@@ -35,7 +35,7 @@ def get_data(filters):
 								inner join `tabPurchase Taxes and Charges` tptac on tpi.name = tptac.parent 
 								where tpi.docstatus = 1 AND tptac.account_head = '213203 - ضريبة القيمة المضافة مشتريات محلية - SATC'
  								And (posting_date BETWEEN '{_from}' AND '{to}')
-							 {conditions}  ;""")
+							 {conditions} GROUP by tpi.name ;""")
 	return data
 
 def get_columns():
