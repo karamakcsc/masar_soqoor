@@ -2,13 +2,13 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
-frappe.query_reports["Soqoor  Sales TAX JV"] = {
+frappe.query_reports["Soqoor Sales TAX Invoice"] = {
 	"filters": [
 		{
-			"fieldname": "pi_no",
-			"label": __("Purchase Invoice"),
+			"fieldname": "si_no",
+			"label": __("Sales Invoice"),
 			"fieldtype": "Link",
-			"options": "Purchase Invoice",
+			"options": "Sales Invoice",
 			"width": 100,
 			"reqd": 0,
 		},
@@ -29,10 +29,10 @@ frappe.query_reports["Soqoor  Sales TAX JV"] = {
 			"default": dateutil.year_end()
 		},
 	  {
-			"fieldname": "supplier_name",
-			"label": __("Supplier Name"),
+			"fieldname": "customer_name",
+			"label": __("Customer Name"),
 			"fieldtype": "Link",
-			"options": "Supplier",
+			"options": "Customer",
 			"width": 100,
 			"reqd": 0,
 		},
@@ -51,7 +51,15 @@ frappe.query_reports["Soqoor  Sales TAX JV"] = {
 			"options": "Tax Category",
 			"width": 100,
 			"reqd": 0,
-		}
+		},
+		{
+							"fieldname": "is_return",
+							"label": __("Is Return"),
+							"fieldtype": "Check",
+							//"options": "Is Return",
+							"width": 100,
+							"reqd": 0,
+						}
 
 ]
 };
