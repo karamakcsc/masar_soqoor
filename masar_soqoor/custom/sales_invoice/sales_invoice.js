@@ -12,19 +12,19 @@ frappe.ui.form.on("Sales Invoice","refresh", function(frm) {
      frm.toggle_display("more_information", false);
 });
 
-// frappe.ui.form.on("Sales Invoice", {
-//   is_return: function (frm) {
-//     if (frm.doc.is_return == 1) {
-//     frm.set_value('naming_series', 'SINV-RET-.YYYY.-')
-//     refresh_field("naming_series");
-//   }
-//   else {
-//   frm.set_value('naming_series', 'SINV-.YYYY.-')
-//     refresh_field("naming_series");
-//   }
-//
-//   }
-// });
+frappe.ui.form.on("Sales Invoice", {
+  is_return: function (frm) {
+    if (frm.doc.is_return == 1) {
+    frm.set_value('naming_series', 'SINV-RET-.YYYY.-')
+    refresh_field("naming_series");
+  }
+  else {
+  frm.set_value('naming_series', 'SINV-.YYYY.-')
+    refresh_field("naming_series");
+  }
+
+  }
+});
 
 frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
        var df=frappe.meta.get_docfield("Sales Invoice", "naming_series",frm.doc.name);s
