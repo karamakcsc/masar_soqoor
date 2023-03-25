@@ -54,6 +54,8 @@ frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
 // });
 
 
+
+
 frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
   if(user=="w.hussain@sattcsa.com"){
      {
