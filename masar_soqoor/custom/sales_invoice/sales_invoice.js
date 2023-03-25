@@ -66,7 +66,7 @@ frappe.ui.form.on("Sales Invoice", "refresh", function(frm) {
   });
   
 frappe.ui.form.on("Sales Invoice", "refresh", function(frm) {
-  if(user=="a.rafique@sattcsa.com"){
+  if(user=="a.rafique@sattcsa.co"){
       {
       frm.toggle_display("update_stock", false);
       frm.refresh_fields();
