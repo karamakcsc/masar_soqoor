@@ -58,6 +58,7 @@ frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
   if(user=="w.hussain@sattcsa.com"){
      {
       frm.toggle_display("update_stock", false);
+      frm.refresh_fields();
      }
    }
   });
@@ -66,6 +67,7 @@ frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
   if(user=="a.rafique@sattcsa.com"){
       {
       frm.toggle_display("update_stock", false);
+      frm.refresh_fields();
       }
     }
   });
@@ -74,6 +76,7 @@ frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
   if(user=="m.salim@sattcsa.com"){
       {
       frm.toggle_display("update_stock", false);
+      frm.refresh_fields();
       }
     }
   });
