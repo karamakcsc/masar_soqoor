@@ -11,8 +11,8 @@ if(user=="w.hussain@sattcsa.com"){
        df.read_only=1;
        var df=frappe.meta.get_docfield("Payment Entry", "mode_of_payment",frm.doc.name);
        df.read_only=1;
-       var df=frappe.meta.get_docfield("Payment Entry", "posting_date",frm.doc.name);
-       df.read_only=1;
+      //  var df=frappe.meta.get_docfield("Payment Entry", "posting_date",frm.doc.name);
+      //  df.read_only=1;
        frm.set_value('naming_series', 'ACC-PAY-.YYYY.-')
        frm.set_value('payment_type', 'Receive')
        frm.set_value('mode_of_payment', 'Cash-المعرض')
@@ -36,8 +36,8 @@ if(user=="a.rafique@sattcsa.com"){
        df.read_only=1;
        var df=frappe.meta.get_docfield("Payment Entry", "mode_of_payment",frm.doc.name);
        df.read_only=1;
-       var df=frappe.meta.get_docfield("Payment Entry", "posting_date",frm.doc.name);
-       df.read_only=1;
+      //  var df=frappe.meta.get_docfield("Payment Entry", "posting_date",frm.doc.name);
+      //  df.read_only=1;
        frm.set_value('naming_series', 'ACC-PAY-.YYYY.-')
        frm.set_value('payment_type', 'Receive')
        frm.set_value('mode_of_payment', 'Cash-قويزةلمعرض')
@@ -61,8 +61,8 @@ if(user=="s.halawi@sattcsa.com"){
        df.read_only=1;
        var df=frappe.meta.get_docfield("Payment Entry", "mode_of_payment",frm.doc.name);
        df.read_only=1;
-       var df=frappe.meta.get_docfield("Payment Entry", "posting_date",frm.doc.name);
-       df.read_only=1;
+      //  var df=frappe.meta.get_docfield("Payment Entry", "posting_date",frm.doc.name);
+      //  df.read_only=1;
        var df=frappe.meta.get_docfield("Payment Entry", "paid_amount",frm.doc.name);
        df.read_only=1;
 
