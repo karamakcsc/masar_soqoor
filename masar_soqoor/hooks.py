@@ -95,16 +95,17 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	"Journal Entry": {
+		"validate": "masar_soqoor.custom.journal_entry.journal_entry.update_employee"
+		# "on_cancel": "method",
+		# "on_trash": "method"
+	}
+}
 doctype_js = {
    "Sales Invoice" : "custom/sales_invoice/sales_invoice.js",
-   "Payment Entry" : "custom/payment_entry/payment_entry.js"
+   "Payment Entry" : "custom/payment_entry/payment_entry.js",
+   "Journal Entry" : "custom/journal_entry/journal_entry.js"
  }
 
 # Scheduled Tasks
