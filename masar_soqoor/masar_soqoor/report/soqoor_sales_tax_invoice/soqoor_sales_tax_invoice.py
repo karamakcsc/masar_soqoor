@@ -24,7 +24,7 @@ def get_data(filters):
 
 	#SQL Query
 	data = frappe.db.sql(f"""SELECT tsi.name AS `Sales Invoice No.`, tsi.posting_date AS `Posting Date`, tsii.sales_order AS `Sales Order`, tstac.account_head AS `Account`,
-									tsi.customer AS`Customer`, tsi.customer_name AS `Customer Name`, tsii.item_group AS `Sales Type`, tsi.tax_id AS `Tax ID`, tsi.total AS `Tax Base Amount`,
+									tsi.customer AS`Customer`, tsi.customer_name AS `Customer Name`, tsii.item_group AS `Sales Type`, tsi.tax_id AS `Tax ID`, tsi.net_total AS `Tax Base Amount`,
 									tstac.tax_amount AS `Tax Amount`, tsi.tax_category AS `Tax Group`, tsi.currency AS `Currency Code`, tsi.is_return
 									from `tabSales Invoice` tsi
 									inner join `tabSales Invoice Item` tsii on tsi.name = tsii.parent
