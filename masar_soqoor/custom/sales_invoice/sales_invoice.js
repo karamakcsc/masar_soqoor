@@ -55,7 +55,7 @@ frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
 
 
 frappe.ui.form.on("Sales Invoice", "refresh", function(frm) {
-  
+
      {
       frm.set_value('update_stock', 0)
       frm.refresh_fields();
@@ -70,7 +70,7 @@ frappe.ui.form.on("Sales Invoice", "refresh", function(frm) {
      }
    }
   });
-  
+
 frappe.ui.form.on("Sales Invoice", "refresh", function(frm) {
   if(user=="a.rafique@sattcsa.co"){
       {
@@ -88,3 +88,20 @@ frappe.ui.form.on("Sales Invoice", "refresh", function(frm) {
       }
     }
   });
+
+
+frappe.ui.form.on("Sales Invoice Item", {
+    refresh: function(frm, cdt, cdn) {
+      var d = locals[cdt][cdn];
+       if(user=="w.hussain@sattcsa.com" || user=="m.salim@sattcsa.com")  {
+        cur_frm.set_value('warehouse', 'Showroom - SATC')
+         cur_frm.refresh_field('warehouse');
+       }
+    },
+    validate: function(frm, cdt, cdn) {
+      var d = locals[cdt][cdn];
+       if(user=="w.hussain@sattcsa.com" || user=="m.salim@sattcsa.com")  {
+        cur_frm.set_value('warehouse', 'Showroom - SATC')
+         cur_frm.refresh_field('warehouse');
+       }
+});
