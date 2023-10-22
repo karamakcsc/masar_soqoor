@@ -105,7 +105,9 @@ doc_events = {
 doctype_js = {
    "Sales Invoice" : "custom/sales_invoice/sales_invoice.js",
    "Payment Entry" : "custom/payment_entry/payment_entry.js",
-   "Journal Entry" : "custom/journal_entry/journal_entry.js"
+   "Journal Entry" : "custom/journal_entry/journal_entry.js",
+   "Delivery Note" : "custom/delivery_note/delivery_note.js",
+   "Quotation" : "custom/quotation/quotation.js",
  }
 
 # Scheduled Tasks
@@ -214,7 +216,10 @@ fixtures = [
 				"Journal Entry Account-tax_base_amount",
 				"Journal Entry Account-tax_category",
                 "Quotation-section_break_104",
-                "Quotation-sales_team"
+                "Quotation-sales_team",
+                "Delivery Note-is_external",
+                "Delivery Note-iqama_no",
+                "Delivery Note-driver_mobail"
 
 
                   ]
