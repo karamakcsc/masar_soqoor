@@ -150,3 +150,18 @@ frappe.ui.form.on("Sales Invoice Item", "refresh", function(frm, cdt, cdn) {
    }
 });
 
+frappe.ui.form.on('Sales Invoice', {
+	refresh(frm) {
+	    if (frappe.user_roles.indexOf("Sales Invoice") ==-1 && !frm.doc.ksa_einv_qr && frm.doc.docstatus < 3) {
+	        $("button[data-original-title=Print]").hide();
+	 
+           }     
+	}
+});frappe.ui.form.on('Sales Invoice', {
+  refresh: function(frm) {
+    if (!frm.doc.ksa_einv_qr && frm.doc.docstatus ==1){
+      // Remove the "Print" option from the menu
+      frm.page.clear_menu();
+    }
+  }
+});
