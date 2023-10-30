@@ -8,52 +8,20 @@ frappe.ui.form.on("Delivery Note", "validate", function(frm, cdt, cdn) {
 });
 
 frappe.ui.form.on('Delivery Note', {
-    before_load: function(frm) {
-        if (frappe.user.has_role!='System Manager') {
-            frm.fields_dict.items.grid.set_column_disp('rate', false);
-            frm.fields_dict.items.grid.set_column_disp('amount', false);
-            frm.fields_dict.items.grid.set_column_disp('discount_and_margin', false);
-            frm.fields_dict.items.grid.set_column_disp('price_list_rate', false);
-            frm.fields_dict.items.grid.set_column_disp('base_price_list_rate', false);
-            frm.fields_dict.items.grid.set_column_disp('margin_rate_or_amount', false);
-            frm.fields_dict.items.grid.set_column_disp('rate_with_margin', false);
-            frm.fields_dict.items.grid.set_column_disp('discount_percentage', false);
-            frm.fields_dict.items.grid.set_column_disp('discount_amount', false);
-            frm.fields_dict.items.grid.set_column_disp('base_rate_with_margin', false);
-            frm.refresh_fields();
-        }
-
-    },
     refresh: function(frm) {
-        if (frappe.user.has_role!='System Manager') {
-            frm.fields_dict.items.grid.set_column_disp('rate', false);
-            frm.fields_dict.items.grid.set_column_disp('amount', false);
-            frm.fields_dict.items.grid.set_column_disp('discount_and_margin', false);
-            frm.fields_dict.items.grid.set_column_disp('price_list_rate', false);
-            frm.fields_dict.items.grid.set_column_disp('base_price_list_rate', false);
-            frm.fields_dict.items.grid.set_column_disp('margin_rate_or_amount', false);
-            frm.fields_dict.items.grid.set_column_disp('rate_with_margin', false);
-            frm.fields_dict.items.grid.set_column_disp('discount_percentage', false);
-            frm.fields_dict.items.grid.set_column_disp('discount_amount', false);
-            frm.fields_dict.items.grid.set_column_disp('base_rate_with_margin', false);
-            frm.refresh_fields();
+        if (!frappe.user.has_role('System Manager')) {
+            const gridRows = frm.fields_dict['items'].grid.grid_rows;
+            gridRows.forEach((row) => {
+                row.docfields.forEach((field) => {
+                    const fieldName = field.fieldname;
+                    if (["base_rate", "base_amount", "rate", "amount", "base_price_list_rate", "discount_and_margin","price_list_rate"].includes(item.fieldname)) {
+                        item.df.hidden = 1;
+                    } else {
+                        item.df.hidden = 0;
+                    }
+                });
+            });
+            frm.fields_dict['items'].grid.refresh();
         }
-        },
-    Validate: function(frm) {
-        if (frappe.user.has_role!='System Manager') {
-            frm.fields_dict.items.grid.set_column_disp('base_price_list_rate', false);
-            frm.fields_dict.items.grid.set_column_disp('rate', false);
-            frm.fields_dict.items.grid.set_column_disp('amount', false);
-            frm.fields_dict.items.grid.set_column_disp('discount_and_margin', false);
-            frm.fields_dict.items.grid.set_column_disp('price_list_rate', false);
-            frm.fields_dict.items.grid.set_column_disp('margin_rate_or_amount', false);
-            frm.fields_dict.items.grid.set_column_disp('rate_with_margin', false);
-            frm.fields_dict.items.grid.set_column_disp('discount_percentage', false);
-            frm.fields_dict.items.grid.set_column_disp('discount_amount', false);
-            frm.fields_dict.items.grid.set_column_disp('base_rate_with_margin', false);
-            frm.refresh_fields();
-        }
-
     }
-
 });
