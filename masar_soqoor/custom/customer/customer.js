@@ -1,5 +1,5 @@
 frappe.ui.form.on("Customer", "onload", function(frm) {
-    if (!frappe.user.has_role('System Manager')){
+    if (frappe.user.has_role('Sales Team')){
      {
          var df=frappe.meta.get_docfield("Customer", "so_required",frm.doc.name);
          df.read_only=1;
