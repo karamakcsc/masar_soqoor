@@ -28,9 +28,9 @@ frappe.ui.form.on('Delivery Note', {
 
 frappe.ui.form.on('Delivery Note', {
     onload: function(frm) {
-        if(frm.docstatus ==0){
-            frm.set_value('set_warehouse', 'Showroom - SATC')
-            frm.refresh_field();
+        if (frm.doc.docstatus != 1) {
+            frm.set_value('set_warehouse', 'Showroom - SATC');
+            frm.refresh_field('set_warehouse');
         }
     }
 });
