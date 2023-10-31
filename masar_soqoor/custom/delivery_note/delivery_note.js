@@ -25,3 +25,10 @@ frappe.ui.form.on('Delivery Note', {
         }
     }
 });
+
+frappe.ui.form.on('Delivery Note', {
+    onload: function(frm) {
+            frm.set_value('set_warehouse', 'Showroom - SATC')
+            frm.refresh_field();
+    }
+});

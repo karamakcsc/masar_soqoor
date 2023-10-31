@@ -108,7 +108,7 @@ doctype_js = {
    "Journal Entry" : "custom/journal_entry/journal_entry.js",
    "Delivery Note" : "custom/delivery_note/delivery_note.js",
    "Quotation" : "custom/quotation/quotation.js",
-   "Customer" : "custom/customer/customer.js",
+#    "Customer" : "custom/customer/customer.js",
  }
 
 # Scheduled Tasks
