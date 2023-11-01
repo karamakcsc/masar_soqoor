@@ -26,11 +26,14 @@ frappe.ui.form.on('Delivery Note', {
     }
 });
 
-frappe.ui.form.on('Delivery Note', {
-    onload: function(frm) {
-        if (frm.doc.docstatus != 1) {
-            frm.set_value('set_warehouse', 'Showroom - SATC');
-            frm.refresh_field('set_warehouse');
-        }
-    }
-});
+// frappe.ui.form.on('Delivery Note', {
+//     onload: function(frm, cdt, cdn) {
+//         var d = locals[cdt][cdn];
+//         if (frm.doc.docstatus != 1) {
+//             frm.set_value('set_warehouse', 'Showroom - SATC');
+//             cur_frm.set_value('warehouse', 'Showroom - SATC')
+//             cur_frm.refresh_field('warehouse');
+//             frm.refresh_field('set_warehouse');
+//         }
+//     }
+// });

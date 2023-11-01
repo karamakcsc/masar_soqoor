@@ -54,13 +54,13 @@ frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
 // });
 
 
-frappe.ui.form.on("Sales Invoice", "refresh", function(frm) {
+// frappe.ui.form.on("Sales Invoice", "refresh", function(frm) {
 
-     {
-      frm.set_value('update_stock', 0)
-      frm.refresh_fields();
-   }
-  });
+//      {
+//       frm.set_value('update_stock', 0)
+//       frm.refresh_fields();
+//    }
+//   });
 
 frappe.ui.form.on("Sales Invoice", "refresh", function(frm) {
   if(user=="w.hussain@sattcsa.com"){
