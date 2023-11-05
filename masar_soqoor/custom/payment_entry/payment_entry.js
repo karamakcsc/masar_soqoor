@@ -1,5 +1,5 @@
 frappe.ui.form.on("Payment Entry", "onload", function(frm) {
-  if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Translator')){
+  if (frappe.user.has_role('Showroom User')){
    {
        var df=frappe.meta.get_docfield("Payment Entry", "naming_series",frm.doc.name);
        df.read_only=1;
@@ -24,7 +24,7 @@ frappe.ui.form.on("Payment Entry", "onload", function(frm) {
 });
 
 frappe.ui.form.on("Payment Entry", "onload", function(frm) {
-  if (frappe.user.has_role('Sales User') || frappe.user.has_role('Stock Manager') || frappe.user.has_role('Stock User')  && frappe.user.has_role('Translator')){
+  if (frappe.user.has_role('Sales User') || frappe.user.has_role('Stock Manager') || frappe.user.has_role('Stock User')){
    {
        var df=frappe.meta.get_docfield("Payment Entry", "naming_series",frm.doc.name);
        df.read_only=1;
@@ -50,7 +50,7 @@ frappe.ui.form.on("Payment Entry", "onload", function(frm) {
 
 
 frappe.ui.form.on("Payment Entry", "onload", function(frm) {
-  if (frappe.user.has_role('Sales User') || frappe.user.has_role('Sales Manager') && frappe.user.has_role('Translator')){
+  if (frappe.user.has_role('Sales User') || frappe.user.has_role('Sales Manager')){
    {
        var df=frappe.meta.get_docfield("Payment Entry", "naming_series",frm.doc.name);
        df.read_only=1;
