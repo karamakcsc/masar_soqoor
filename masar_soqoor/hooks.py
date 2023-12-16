@@ -108,7 +108,11 @@ doctype_js = {
    "Journal Entry" : "custom/journal_entry/journal_entry.js",
    "Delivery Note" : "custom/delivery_note/delivery_note.js",
    "Quotation" : "custom/quotation/quotation.js",
-#    "Customer" : "custom/customer/customer.js",
+   "Material Request" : "custom/material_request/material_request.js",
+   "Customer" : "custom/customer/customer.js",
+   "Stock Entry" : "custom/stock_entry/stock_entry.js",
+   "Item" : "custom/item/item.js",
+   "Sales Order": "custom/sales_order/sales_order.js"
  }
 
 # Scheduled Tasks
@@ -216,11 +220,10 @@ fixtures = [
                 "Payment Entry-paid_from_des",
 				"Journal Entry Account-tax_base_amount",
 				"Journal Entry Account-tax_category",
-                "Quotation-section_break_104",
-                "Quotation-sales_team",
                 "Delivery Note-is_external",
                 "Delivery Note-iqama_no",
-                "Delivery Note-driver_mobail"
+                "Delivery Note-driver_mobail",
+                "Customer-custom_mobile_no"
 
 
                   ]

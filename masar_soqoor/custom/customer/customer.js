@@ -1,54 +1,227 @@
-// // frappe.ui.form.on("Customer", "onload", function(frm) {
-// //     if (frappe.user.has_role('Sales Team')){
-// //      {
-// //          var df=frappe.meta.get_docfield("Customer", "so_required",frm.doc.name);
-// //          df.read_only=1;
-// //          var df=frappe.meta.get_docfield("Customer", "dn_required",frm.doc.name);
-// //          df.read_only=1;
-// //          var df=frappe.meta.get_docfield("Customer", "is_frozen",frm.doc.name);
-// //          df.read_only=1;
-// //          var df=frappe.meta.get_docfield("Customer", "disabled",frm.doc.name);
-// //          df.read_only=1;
-// //         //  var df=frappe.meta.get_docfield("Customer", "mode_of_payment",frm.doc.name);
-// //         //  df.read_only=1;
-// //         //  var df=frappe.meta.get_docfield("Payment Entry", "posting_date",frm.doc.name);
-// //         //  df.read_only=1;
-// //         //  frm.set_value('naming_series', 'ACC-PAY-.YYYY.-')
-// //         //  frm.set_value('payment_type', 'Receive')
-// //         //  frm.set_value('mode_of_payment', 'Cash-المعرض')
-// //         //  frm.set_value('paid_to', '111005 - صندوق معرض الدراجة - SATC')
-// //         //  frm.set_value('party_type', 'Customer')
-// //          frm.refresh_fields();
-// //      }
-// //    }
-// //   });
-  
-//   frappe.ui.form.on('Customer', {
-//     onload: function(frm){
-//       if(user=="w.hussain@sattcsa.com" && user=="a.rafique@sattcsa.co"){
-//            cur_frm.dashboard.hide() //Hide DashBoard
-//            frm.toggle_display("so_required", false);
-//            frm.toggle_display("dn_required", false);
-//            frm.toggle_display("is_frozen", false);
-//            frm.toggle_display("disabled", false);
-//         //    frm.toggle_display("item_locations_section", false);
-//         //    frm.toggle_display("unit_of_measure_conversion", false);
-//         //    frm.toggle_display("serial_nos_and_batches", false);
-//         //    frm.toggle_display("variants_section", false);
-//         //    frm.toggle_display("defaults", false);
-//         //    frm.toggle_display("purchase_details", false);
-//         //    frm.toggle_display("supplier_details", false);
-//         //    frm.toggle_display("foreign_trade_details", false);
-//         //    frm.toggle_display("sales_details", false);
-//         //    frm.toggle_display("deferred_revenue", false);
-//         //    frm.toggle_display("deferred_expense_section", false);
-//         //    frm.toggle_display("customer_details", false);
-//         //    frm.toggle_display("item_tax_section_break", false);
-//         //    frm.toggle_display("inspection_criteria", false);
-//         //    frm.toggle_display("manufacturing", false);
-//         //    frm.toggle_display("hub_publishing_sb", false);
-//         //    frm.toggle_display("is_item_from_hub", false);
-//         //    frm.toggle_display("include_item_in_manufacturing", false);
-//      }
-//     }
-// });
+frappe.ui.form.on("Customer", "onload", function(frm) {
+    if (!frappe.user.has_role('System Manager')) {
+        var df_customer_group = frappe.meta.get_docfield("Customer", "customer_group", frm.doc.name);
+        df_customer_group.read_only = 1;
+
+        var df_territory = frappe.meta.get_docfield("Customer", "territory", frm.doc.name);
+        df_territory.read_only = 1;
+
+        var df_tax_category = frappe.meta.get_docfield("Customer", "tax_category", frm.doc.name);
+        df_tax_category.read_only = 1;
+
+        frm.toggle_display("so_required", false);
+        frm.toggle_display("dn_required", false);
+        frm.toggle_display("is_frozen", false);
+        frm.toggle_display("disabled", false);
+
+        frm.set_value('customer_group', "Cash Customer");
+        frm.set_value('territory', "Saudi Arabia");
+        frm.set_value('tax_category', "VAT_15");
+
+        frm.refresh_fields();
+    }
+});
+
+frappe.ui.form.on("Customer", "onload", function(frm) {
+    if (!frappe.user.has_role('System Manager')) {
+        var df_customer_group = frappe.meta.get_docfield("Customer", "customer_group", frm.doc.name);
+        df_customer_group.read_only = 1;
+
+        var df_territory = frappe.meta.get_docfield("Customer", "territory", frm.doc.name);
+        df_territory.read_only = 1;
+
+        var df_tax_category = frappe.meta.get_docfield("Customer", "tax_category", frm.doc.name);
+        df_tax_category.read_only = 1;
+
+        frm.toggle_display("so_required", false);
+        frm.toggle_display("dn_required", false);
+        frm.toggle_display("is_frozen", false);
+        frm.toggle_display("disabled", false);
+        frm.toggle_display("defaults_tab", false);
+        frm.toggle_display("internal_customer_section", false);
+        frm.toggle_display("more_info", false);
+        frm.toggle_display("accounting_tab", false);
+        frm.toggle_display("credit_limit_section", false);
+        frm.toggle_display("payment_terms", false);
+        frm.toggle_display("credit_limits", false);
+        frm.toggle_display("default_receivable_accounts", false);
+        frm.toggle_display("default_sales_partner", false);
+        frm.toggle_display("default_commission_rate", false);
+
+        frm.set_value('customer_group', "Cash Customer");
+        frm.set_value('territory', "Saudi Arabia");
+        frm.set_value('tax_category', "VAT_15");
+
+        frm.refresh_fields();
+    }
+});
+
+frappe.ui.form.on("Customer", "validate", function(frm) {
+    if (!frappe.user.has_role('System Manager')) {
+        var allowedCustomerTypes = ["Company", "Individual"];
+        
+        if (!allowedCustomerTypes.includes(frm.doc.customer_type)) {
+            frappe.msgprint("The Customer Type is incorrect. Please select either 'Company' or 'Individual'.");
+            frappe.validated = false; // Prevent form submission
+        }
+    }
+});
+
+
+
+frappe.ui.form.on('Customer', {
+    setup: function(frm) {
+        if (!frappe.user.has_role('System Manager')) {
+        frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['Sales Person', 'employee', '=', "HR-EMP-00007"]
+                ]
+            };
+        };
+
+        frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['employee', '=', "HR-EMP-00007"]
+                ]
+            };
+        };
+    }
+    }
+    // onload: function(frm) {
+    //     if (frappe.session.user === "m.salim@sattcsa.com") {
+    //         frm.set_value('sales_team', [{
+    //             'sales_person': 'Muhammad Saleem Riaz'
+    //         }]);
+    //         frm.refresh_field('sales_team');
+    //     }
+    // }
+});
+
+
+
+
+frappe.ui.form.on('Customer', {
+    setup: function(frm) {
+        if (!frappe.user.has_role('System Manager')) {
+        frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['Sales Person', 'employee', '=', "HR-EMP-00036"]
+                ]
+            };
+        };
+
+        frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['employee', '=', "HR-EMP-00036"]
+                ]
+            };
+        };
+    }
+    }
+    // onload: function(frm) {
+    //     if (frappe.session.user === "w.hussain@sattcsa.com") {
+    //         frm.set_value('sales_team', [{
+    //             'sales_person': 'Mohammad Waseem'
+    //         }]);
+    //         frm.refresh_field('sales_team');
+    //     }
+    // }
+});
+
+
+
+frappe.ui.form.on('Customer', {
+    setup: function(frm) {
+        if (!frappe.user.has_role('System Manager')) {
+        frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['Sales Person', 'employee', '=', "HR-EMP-00037"]
+                ]
+            };
+        };
+
+        frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['employee', '=', "HR-EMP-00037"]
+                ]
+            };
+        };
+    }
+    }
+    // onload: function(frm) {
+    //     if (frappe.session.user === "m.emad@sattcsa.com") {
+    //         frm.set_value('sales_team', [{
+    //             'sales_person': 'Musallam Emad'
+    //         }]);
+    //         frm.refresh_field('sales_team');
+    //     }
+    // }
+});
+
+
+frappe.ui.form.on('Customer', {
+    setup: function(frm) {
+        if (!frappe.user.has_role('System Manager')) {
+        frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['Sales Person', 'employee', '=', "HR-EMP-00040"]
+                ]
+            };
+        };
+
+        frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['employee', '=', "HR-EMP-00040"]
+                ]
+            };
+        };
+    }
+    }
+    // onload: function(frm) {
+    //     if (frappe.session.user === "h.fouaid@sattcsa.com") {
+    //         frm.set_value('sales_team', [{
+    //             'sales_person': 'Hamdi Fuad'
+    //         }]);
+    //         frm.refresh_field('sales_team');
+    //     }
+    // }
+});
+
+
+frappe.ui.form.on('Customer', {
+    setup: function(frm) {
+        if (!frappe.user.has_role('System Manager')) {
+        frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['Sales Person', 'employee', '=', "HR-EMP-00005"]
+                ]
+            };
+        };
+
+        frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['employee', '=', "HR-EMP-00005"]
+                ]
+            };
+        };
+    }
+    }
+    // onload: function(frm) {
+    //     if (frappe.session.user === "s.ahmed@sattcsa.com") {
+    //         frm.set_value('sales_team', [{
+    //             'sales_person': 'Sarfaraz Ahmed Haque'
+    //         }]);
+    //         frm.refresh_field('sales_team');
+    //     }
+    // }
+});

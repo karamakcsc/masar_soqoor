@@ -1,0 +1,41 @@
+{
+ "allow_roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Sales User"
+  },
+  {
+   "role": "Sales Manager"
+  }
+ ],
+ "creation": "2023-12-15 14:21:50.882338",
+ "docstatus": 0,
+ "doctype": "Module Onboarding",
+ "documentation_url": "/app/quotation",
+ "idx": 0,
+ "is_complete": 0,
+ "modified": "2023-12-15 14:21:50.882338",
+ "modified_by": "Administrator",
+ "module": "Masar Soqoor",
+ "name": "Sales Team",
+ "owner": "Administrator",
+ "steps": [
+  {
+   "step": "Create a Quotation"
+  },
+  {
+   "step": "Sales Order"
+  },
+  {
+   "step": "Create Your First Sales Invoice"
+  },
+  {
+   "step": "Create a Stock Entry"
+  }
+ ],
+ "subtitle": "Showroom",
+ "success_message": "thankyou",
+ "title": "Showroom"
+}
