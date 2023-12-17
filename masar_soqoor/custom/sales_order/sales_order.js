@@ -8,49 +8,53 @@ frappe.ui.form.on("Sales Order", "validate", function(frm, cdt, cdn) {
 }
 });
 
+frappe.ui.form.on("Sales Order","onload", function(frm) {
 
+    if (!frappe.user.has_role('System Manager') && frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User')) {
+        
+        frm.toggle_display("naming_series", false);
+        frm.toggle_display("incoterm", false);
+        frm.toggle_display("accounting_dimensions_section", false);
+        frm.toggle_display("taxes", false);
+        frm.toggle_display("sales_team_section_break", false);
+        frm.toggle_display("subscription_section", false);
+        frm.toggle_display("printing_details", false);
+        frm.toggle_display("vat_section", false);
+        frm.toggle_display("additional_info_section", false);
+        frm.toggle_display("payment_schedule", false);
+        frm.toggle_display("disable_rounded_total", false);
 
+        var df=frappe.meta.get_docfield("Sales Order", "naming_series",frm.doc.name);
+        df.read_only=1;
+        var df=frappe.meta.get_docfield("Sales Order", "shipping_rule",frm.doc.name);
+        df.read_only=1;
+        var df=frappe.meta.get_docfield("Sales Order", "tax_category",frm.doc.name);
+        df.read_only=1;
+        var df=frappe.meta.get_docfield("Sales Order", "taxes_and_charges",frm.doc.name);
+        df.read_only=1;
+        var df=frappe.meta.get_docfield("Sales Order", "taxes",frm.doc.name);
+        df.read_only=1;
+        var df=frappe.meta.get_docfield("Sales Order", "order_type",frm.doc.name);
+        df.read_only=1;
+        var df=frappe.meta.get_docfield("Sales Order", "currency",frm.doc.name);
+        df.read_only=1;
+        var df=frappe.meta.get_docfield("Sales Order", "selling_price_list",frm.doc.name);
+        df.read_only=1;
+        var df=frappe.meta.get_docfield("Sales Order", "return_against",frm.doc.name);
+        df.read_only=1;
+        var df=frappe.meta.get_docfield("Sales Order", "disable_rounded_total",frm.doc.name);
+        df.read_only=1;
+}
+});
 
 
 frappe.ui.form.on("Sales Order","onload", function(frm) {
 
-    if (!frappe.user.has_role('System Manager') && frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User')) {
-  
-      frm.toggle_display("naming_series", false);
-      frm.toggle_display("incoterm", false);
-      frm.toggle_display("accounting_dimensions_section", false);
-      frm.toggle_display("taxes", false);
-      frm.toggle_display("sales_team_section_break", false);
-      frm.toggle_display("subscription_section", false);
-      frm.toggle_display("printing_details", false);
-      frm.toggle_display("vat_section", false);
-      frm.toggle_display("additional_info_section", false);
-      frm.toggle_display("payment_schedule", false);
-      frm.toggle_display("disable_rounded_total", false);
-      
-      var df=frappe.meta.get_docfield("Sales Order", "naming_series",frm.doc.name);
-      df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "shipping_rule",frm.doc.name);
-      df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "tax_category",frm.doc.name);
-      df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "taxes_and_charges",frm.doc.name);
-      df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "taxes",frm.doc.name);
-      df.read_only=1;
+    if (!frappe.user.has_role('System Manager') && frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User')) {    
+        
       var df=frappe.meta.get_docfield("Sales Order", "set_warehouse",frm.doc.name);
       df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "order_type",frm.doc.name);
-      df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "currency",frm.doc.name);
-      df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "selling_price_list",frm.doc.name);
-      df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "return_against",frm.doc.name);
-      df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "disable_rounded_total",frm.doc.name);
-      df.read_only=1;
-  
+
       frm.set_value('update_stock', 1);
       frm.set_value('tax_category', 'VAT_15')
       frm.set_value('taxes_and_charges', 'KSA VAT 15% - SATC')
@@ -64,47 +68,8 @@ frappe.ui.form.on("Sales Order","onload", function(frm) {
 
     if (frappe.user.has_role('Sales User')  && frappe.user.has_role('Sales Manager')) {
   
-      frm.toggle_display("naming_series", false);
-      frm.toggle_display("incoterm", false);
-      frm.toggle_display("accounting_dimensions_section", false);
-      frm.toggle_display("taxes", false);
-      frm.toggle_display("sales_team_section_break", false);
-      frm.toggle_display("subscription_section", false);
-      frm.toggle_display("printing_details", false);
-      frm.toggle_display("vat_section", false);
-      frm.toggle_display("additional_info_section", false);
-      frm.toggle_display("payment_schedule", false);
-      frm.toggle_display("disable_rounded_total", false);
-      frm.toggle_display("payment_schedule_section", false);
-      
-      
-      var df=frappe.meta.get_docfield("Sales Order", "naming_series",frm.doc.name);
-      df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "shipping_rule",frm.doc.name);
-      df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "tax_category",frm.doc.name);
-      df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "taxes_and_charges",frm.doc.name);
-      df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "taxes",frm.doc.name);
-      df.read_only=1;
-    //   var df=frappe.meta.get_docfield("Sales Order", "set_warehouse",frm.doc.name);
-    //   df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "order_type",frm.doc.name);
-      df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "currency",frm.doc.name);
-      df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "selling_price_list",frm.doc.name);
-      df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "return_against",frm.doc.name);
-      df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Order", "disable_rounded_total",frm.doc.name);
-      df.read_only=1;
-  
-    //   frm.set_value('update_stock', 1);
       frm.set_value('tax_category', 'VAT_15')
       frm.set_value('taxes_and_charges', 'KSA VAT 15% - SATC')
-    //   frm.set_value('set_warehouse', 'Quieza Warehouse - SATC')
     }
   });
 
