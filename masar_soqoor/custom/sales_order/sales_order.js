@@ -14,7 +14,7 @@ frappe.ui.form.on("Sales Order", "validate", function(frm, cdt, cdn) {
 
 frappe.ui.form.on("Sales Order","onload", function(frm) {
 
-    if (!frappe.user.has_role('System Manager') && frappe.user.has_role('Showroom User') && !frappe.user.has_role('Sales User')&& frappe.user.has_role('Stock User')) {
+    if (!frappe.user.has_role('System Manager') && frappe.user.has_role('Showroom User')) {
   
       frm.toggle_display("naming_series", false);
       frm.toggle_display("incoterm", false);
@@ -62,7 +62,7 @@ frappe.ui.form.on("Sales Order","onload", function(frm) {
 
   frappe.ui.form.on("Sales Order","onload", function(frm) {
 
-    if (frappe.user.has_role('Sales User') && frappe.user.has_role('Sales Manager') && frappe.user.has_role('Stock User')) {
+    if (frappe.user.has_role('Sales User') && frappe.user.has_role('Sales Manager')) {
   
       frm.toggle_display("naming_series", false);
       frm.toggle_display("incoterm", false);
@@ -257,7 +257,7 @@ frappe.ui.form.on('Sales Order', {
 
 frappe.ui.form.on('Sales Order', {
     refresh(frm) {
-        if ( !frappe.user.has_role('System Manager') && !frappe.user.has_role('Showroom User')) {
+        if ( !frappe.user.has_role('System Manager') && !frappe.user.has_role('Showroom User') && frappe.user.has_role('Sales User') && frappe.user.has_role('Sales Manager')) {
         setTimeout(() => {
             // frm.remove_custom_button('Update Items');
             frm.remove_custom_button('Purchase Order', 'Create');
@@ -279,7 +279,7 @@ frappe.ui.form.on('Sales Order', {
 
 frappe.ui.form.on('Sales Order', {
     refresh(frm) {
-        if ( !frappe.user.has_role('System Manager') && frappe.user.has_role('Showroom User')) {
+        if ( !frappe.user.has_role('System Manager') && frappe.user.has_role('Showroom User') ) {
         setTimeout(() => {
             // frm.remove_custom_button('Update Items');
             frm.remove_custom_button('Purchase Order', 'Create');
