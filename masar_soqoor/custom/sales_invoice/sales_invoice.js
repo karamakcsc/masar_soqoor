@@ -225,7 +225,7 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
     frm.set_value('Standard','pos_profile');
     
   }
-});//siam
+});
 
 
 
