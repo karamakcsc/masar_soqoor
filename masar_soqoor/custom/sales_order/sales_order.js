@@ -62,7 +62,7 @@ frappe.ui.form.on("Sales Order","onload", function(frm) {
 
   frappe.ui.form.on("Sales Order","onload", function(frm) {
 
-    if (frappe.user.has_role('Sales User')  && frappe.user.has_role('Stock Manager') && frappe.user.has_role('Sales Manager')) {
+    if (frappe.user.has_role('Sales User')  && frappe.user.has_role('Sales Manager')) {
   
       frm.toggle_display("naming_series", false);
       frm.toggle_display("incoterm", false);
@@ -107,126 +107,6 @@ frappe.ui.form.on("Sales Order","onload", function(frm) {
     //   frm.set_value('set_warehouse', 'Quieza Warehouse - SATC')
     }
   });
-
-
-
-
-
-
-//  frappe.ui.form.on('Sales Order', {
-//   setup: function(frm) {
-//       if (frm.doc.docstatus != 1) {
-//           frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
-//               return {
-//                   filters: [
-//                       ['Sales Person', 'employee', '=', "HR-EMP-00005"]
-//                   ]
-//               };
-//           };
-
-//           frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
-//               return {
-//                   filters: [
-//                       ['employee', '=', "HR-EMP-00005"]
-//                   ]
-//               };
-//           };
-//       }
-//   }
-// });
-
-// frappe.ui.form.on('Sales Order', {
-//   setup: function(frm) {
-//       if (frm.doc.docstatus != 1) {
-//           frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
-//               return {
-//                   filters: [
-//                       ['Sales Person', 'employee', '=', "HR-EMP-00040"]
-//                   ]
-//               };
-//           };
-
-//           frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
-//               return {
-//                   filters: [
-//                       ['employee', '=', "HR-EMP-00040"]
-//                   ]
-//               };
-//           };
-//       }
-//   }
-// });
-
-
-
-// frappe.ui.form.on('Sales Order', {
-//   setup: function(frm) {
-//       if (frm.doc.docstatus != 1) {
-//           frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
-//               return {
-//                   filters: [
-//                       ['Sales Person', 'employee', '=', "HR-EMP-00037"]
-//                   ]
-//               };
-//           };
-
-//           frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
-//               return {
-//                   filters: [
-//                       ['employee', '=', "HR-EMP-00037"]
-//                   ]
-//               };
-//           };
-//       }
-//   }
-// });
-
-
-
-// frappe.ui.form.on('Sales Order', {
-//   setup: function(frm) {
-//       if (frm.doc.docstatus != 1) {
-//           frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
-//               return {
-//                   filters: [
-//                       ['Sales Person', 'employee', '=', "HR-EMP-00036"]
-//                   ]
-//               };
-//           };
-
-//           frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
-//               return {
-//                   filters: [
-//                       ['employee', '=', "HR-EMP-00036"]
-//                   ]
-//               };
-//           };
-//       }
-//   }
-// });
-
-
-// frappe.ui.form.on('Sales Order', {
-//   setup: function(frm) {
-//       if (frm.doc.docstatus != 1) {
-//           frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
-//               return {
-//                   filters: [
-//                       ['Sales Person', 'employee', '=', "HR-EMP-00007"]
-//                   ]
-//               };
-//           };
-
-//           frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
-//               return {
-//                   filters: [
-//                       ['employee', '=', "HR-EMP-00007"]
-//                   ]
-//               };
-//           };
-//       }
-//   }
-// });
 
 
 
