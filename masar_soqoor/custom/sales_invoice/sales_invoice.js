@@ -139,7 +139,7 @@ frappe.ui.form.on('Sales Invoice', {
 
 frappe.ui.form.on("Sales Invoice", {
   payment_type: function(frm) {
-      if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('System Manager') && !frappe.user.has_role('Sales User')&& frappe.user.has_role('Stock User')) {
+      if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Sales Manager') && !frappe.user.has_role('System Manager') && !frappe.user.has_role('Sales User')&& frappe.user.has_role('Stock User')) {
           if (frm.doc.payment_type === 'Cash') {
               frm.set_value('is_pos', 1);
           } else {
@@ -216,7 +216,7 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
 
 frappe.ui.form.on("Sales Invoice Item", "refresh", function(frm, cdt, cdn) {
   var d = locals[cdt][cdn];
-  if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('System Manager') && !frappe.user.has_role('Sales User')&& frappe.user.has_role('Stock User')) {
+  if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Sales Manager') && !frappe.user.has_role('System Manager') && !frappe.user.has_role('Sales User')&& frappe.user.has_role('Stock User')) {
     cur_frm.set_value('warehouse', 'Showroom - SATC')
      cur_frm.refresh_field();
    }
@@ -260,7 +260,7 @@ frappe.ui.form.on("Sales Invoice", {
 
 frappe.ui.form.on("Sales Invoice","onload", function(frm) {
 
-    if (frappe.user.has_role('Sales User') && !frappe.user.has_role('System Manager')&& frappe.user.has_role('Stock User')) {
+    if (frappe.user.has_role('Sales User') && frappe.user.has_role('Sales Manager') && !frappe.user.has_role('System Manager') && frappe.user.has_role('Stock User')) {
   
       frm.toggle_display("naming_series", false);
       frm.toggle_display("set_posting_time", false);
@@ -313,7 +313,10 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
       df.read_only=1;
       var df=frappe.meta.get_docfield("Sales Invoice", "payment_type",frm.doc.name);
       df.read_only=1;
-  
+      var df=frappe.meta.get_docfield("Sales Invoice", "naming_series",frm.doc.name);
+      df.read_only=1;
+      var df=frappe.meta.get_docfield("Sales Invoice", "territory",frm.doc.name);
+      df.read_only=1;
       
       frm.set_value('tax_category', 'VAT_15')
       frm.set_value('taxes_and_charges', 'KSA VAT 15% - SATC')
@@ -324,3 +327,20 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
     }
   });
   
+
+  frappe.ui.form.on('Sales Invoice', {
+    refresh(frm) {
+        if ( !frappe.user.has_role('System Manager')) {
+        setTimeout(() => {
+            frm.remove_custom_button('Fetch Timesheet');
+            frm.remove_custom_button('Subscription', 'Create');
+            frm.remove_custom_button('Maintenance Schedule', 'Create');
+            frm.remove_custom_button('Invoice Discounting', 'Create');
+            frm.remove_custom_button('Quotation', 'Get Items From');
+            frm.remove_custom_button('Sales Order', 'Get Items From');
+            frm.remove_custom_button('Quality Inspection(s)', 'Create');
+            frm.remove_custom_button('Create');
+        }, 10);
+    }
+}
+});

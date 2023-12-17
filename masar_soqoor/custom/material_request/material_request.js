@@ -1,5 +1,5 @@
 frappe.ui.form.on("Material Request", "onload", function(frm) {
-  if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('System Manager')  && frappe.user.has_role('Stock User')){
+  if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('System Manager')  && frappe.user.has_role('Stock User') && frappe.user.has_role('Sales Manager')){
    {
        var df=frappe.meta.get_docfield("Material Request", "material_request_type",frm.doc.name);
        df.read_only=1;
@@ -15,6 +15,7 @@ frappe.ui.form.on("Material Request", "onload", function(frm) {
    }
  }
 });
+
 
 
 frappe.ui.form.on('Material Request', {

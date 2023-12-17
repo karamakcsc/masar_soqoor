@@ -14,7 +14,7 @@ frappe.ui.form.on("Sales Order", "validate", function(frm, cdt, cdn) {
 
 frappe.ui.form.on("Sales Order","onload", function(frm) {
 
-    if (!frappe.user.has_role('System Manager') && !frappe.user.has_role('Sales User')&& frappe.user.has_role('Stock User')) {
+    if (!frappe.user.has_role('System Manager') && frappe.user.has_role('Showroom User') && !frappe.user.has_role('Sales User')&& frappe.user.has_role('Stock User')) {
   
       frm.toggle_display("naming_series", false);
       frm.toggle_display("incoterm", false);
@@ -62,7 +62,7 @@ frappe.ui.form.on("Sales Order","onload", function(frm) {
 
   frappe.ui.form.on("Sales Order","onload", function(frm) {
 
-    if (frappe.user.has_role('Sales User')&& frappe.user.has_role('Stock User')) {
+    if (frappe.user.has_role('Sales User') && frappe.user.has_role('Sales Manager') && frappe.user.has_role('Stock User')) {
   
       frm.toggle_display("naming_series", false);
       frm.toggle_display("incoterm", false);
@@ -262,6 +262,15 @@ frappe.ui.form.on('Sales Order', {
             // frm.remove_custom_button('Update Items');
             frm.remove_custom_button('Purchase Order', 'Create');
             frm.remove_custom_button('Subscription', 'Create');
+            frm.remove_custom_button('Sales Invoice', 'Create');
+            frm.remove_custom_button('Delivery Note', 'Create');
+            frm.remove_custom_button('Sales Invoice', 'Create');
+            frm.remove_custom_button('Material Request', 'Create');
+            frm.remove_custom_button('Request for Raw Materials', 'Create');
+            frm.remove_custom_button('Project', 'Create');
+            frm.remove_custom_button('Pick List', 'Create');
+            frm.remove_custom_button('Work Order', 'Create');
+            frm.remove_custom_button('Quotation','Get Items From');
         }, 10);
     }
 }
