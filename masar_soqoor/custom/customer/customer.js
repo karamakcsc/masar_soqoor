@@ -88,18 +88,18 @@ frappe.ui.form.on('Customer', {
                 };
             };
         }
+    },
+    onload: function(frm) {
+        if (frappe.session.user === "m.emad@sattcsa.com") {
+            // Check if sales_team field is empty before setting the value
+            if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
+                frm.set_value('sales_team', [{
+                    'sales_person': 'Musallam Emad'
+                }]);
+                frm.refresh_field('sales_team');
+            }
+        }
     }
-    // onload: function(frm) {
-    //     if (frappe.session.user === "m.emad@sattcsa.com") {
-    //         // Check if sales_team field is empty before setting the value
-    //         if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
-    //             frm.set_value('sales_team', [{
-    //                 'sales_person': 'Musallam Emad'
-    //             }]);
-    //             frm.refresh_field('sales_team');
-    //         }
-    //     }
-    // }
 });
 
 
@@ -125,17 +125,17 @@ frappe.ui.form.on('Customer', {
             };
         };
     }
+    },
+    onload: function(frm) {
+        if (frappe.session.user === "w.hussain@sattcsa.com") {
+            if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
+            frm.set_value('sales_team', [{
+                'sales_person': 'Mohammad Waseem'
+            }]);
+            frm.refresh_field('sales_team');
+        }
     }
-//     onload: function(frm) {
-//         if (frappe.session.user === "w.hussain@sattcsa.com") {
-//             if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
-//             frm.set_value('sales_team', [{
-//                 'sales_person': 'Mohammad Waseem'
-//             }]);
-//             frm.refresh_field('sales_team');
-//         }
-//     }
-// }
+}
 });
 
 
@@ -159,17 +159,17 @@ frappe.ui.form.on('Customer', {
             };
         };
     }
+    },
+    onload: function(frm) {
+        if (frappe.session.user === "m.salim@sattcsa.com") {
+            if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
+            frm.set_value('sales_team', [{
+                'sales_person': 'Muhammad Saleem Riaz'
+            }]);
+            frm.refresh_field('sales_team');
+        }
     }
-    // onload: function(frm) {
-    //     if (frappe.session.user === "m.salim@sattcsa.com") {
-    //         if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
-    //         frm.set_value('sales_team', [{
-    //             'sales_person': 'Muhammad Saleem Riaz'
-    //         }]);
-    //         frm.refresh_field('sales_team');
-    //     }
-    // }
-    // }
+    }
 });
 
 
@@ -192,17 +192,17 @@ frappe.ui.form.on('Customer', {
             };
         };
     }
+    },
+    onload: function(frm) {
+        if (frappe.session.user === "h.fouaid@sattcsa.com") {
+            if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
+            frm.set_value('sales_team', [{
+                'sales_person': 'Hamdi Fuad'
+            }]);
+            frm.refresh_field('sales_team');
+        }
     }
-    // onload: function(frm) {
-    //     if (frappe.session.user === "h.fouaid@sattcsa.com") {
-    //         if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
-    //         frm.set_value('sales_team', [{
-    //             'sales_person': 'Hamdi Fuad'
-    //         }]);
-    //         frm.refresh_field('sales_team');
-    //     }
-    // }
-    // }
+    }
 });
 
 
@@ -225,16 +225,15 @@ frappe.ui.form.on('Customer', {
             };
         };
     }
+    },
+    onload: function(frm) {
+        if (frappe.session.user === "s.ahmed@sattcsa.com") {
+            if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
+            frm.set_value('sales_team', [{
+                'sales_person': 'Sarfaraz Ahmed Haque'
+            }]);
+            frm.refresh_field('sales_team');
+        }
     }
-    // onload: function(frm) {
-    //     if (frappe.session.user === "s.ahmed@sattcsa.com") {
-    //         if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
-    //         frm.set_value('sales_team', [{
-    //             'sales_person': 'Sarfaraz Ahmed Haque'
-    //         }]);
-    //         frm.refresh_field('sales_team');
-    //     }
-    // }
-    // }
+    }
 });
-//siam
