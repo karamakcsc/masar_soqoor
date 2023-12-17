@@ -51,7 +51,7 @@ frappe.ui.form.on("Sales Order","onload", function(frm) {
       var df=frappe.meta.get_docfield("Sales Order", "disable_rounded_total",frm.doc.name);
       df.read_only=1;
   
-    //   frm.set_value('update_stock', 1);
+      frm.set_value('update_stock', 1);
       frm.set_value('tax_category', 'VAT_15')
       frm.set_value('taxes_and_charges', 'KSA VAT 15% - SATC')
       frm.set_value('set_warehouse', 'Showroom - SATC')
