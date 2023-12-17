@@ -62,7 +62,7 @@ frappe.ui.form.on("Sales Order","onload", function(frm) {
 
   frappe.ui.form.on("Sales Order","onload", function(frm) {
 
-    if (frappe.user.has_role('Sales User') && frappe.user.has_role('Sales Manager')) {
+    if (frappe.user.has_role('Sales User')  && frappe.user.has_role('Stock Manager') && frappe.user.has_role('Sales Manager')) {
   
       frm.toggle_display("naming_series", false);
       frm.toggle_display("incoterm", false);
@@ -300,171 +300,171 @@ frappe.ui.form.on('Sales Order', {
 
 
 
-// frappe.ui.form.on('Sales Order', {
-//     setup: function(frm) {
-//         if (!frappe.user.has_role('System Manager')) {
-//             frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
-//                 return {
-//                     filters: [
-//                         ['Sales Person', 'employee', '=', "HR-EMP-00037"]
-//                     ]
-//                 };
-//             };
+frappe.ui.form.on('Sales Order', {
+    setup: function(frm) {
+        if (!frappe.user.has_role('System Manager')) {
+            frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
+                return {
+                    filters: [
+                        ['Sales Person', 'employee', '=', "HR-EMP-00037"]
+                    ]
+                };
+            };
 
-//             frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
-//                 return {
-//                     filters: [
-//                         ['employee', '=', "HR-EMP-00037"]
-//                     ]
-//                 };
-//             };
-//         }
-//     },
-//     onload: function(frm) {
-//         if (frappe.session.user === "m.emad@sattcsa.com") {
-//             // Check if sales_team field is empty before setting the value
-//             if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
-//                 frm.set_value('sales_team', [{
-//                     'sales_person': 'Musallam Emad'
-//                 }]);
-//                 frm.refresh_field('sales_team');
-//             }
-//         }
-//     }
-// });
-
-
+            frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
+                return {
+                    filters: [
+                        ['employee', '=', "HR-EMP-00037"]
+                    ]
+                };
+            };
+        }
+    },
+    onload: function(frm) {
+        if (frappe.session.user === "m.emad@sattcsa.com") {
+            // Check if sales_team field is empty before setting the value
+            if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
+                frm.set_value('sales_team', [{
+                    'sales_person': 'Musallam Emad'
+                }]);
+                frm.refresh_field('sales_team');
+            }
+        }
+    }
+});
 
 
 
-// frappe.ui.form.on('Sales Order', {
-//     setup: function(frm) {
-//         if (!frappe.user.has_role('System Manager')) {
-//         frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
-//             return {
-//                 filters: [
-//                     ['Sales Person', 'employee', '=', "HR-EMP-00036"]
-//                 ]
-//             };
-//         };
-
-//         frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
-//             return {
-//                 filters: [
-//                     ['employee', '=', "HR-EMP-00036"]
-//                 ]
-//             };
-//         };
-//     }
-//     },
-//     onload: function(frm) {
-//         if (frappe.session.user === "w.hussain@sattcsa.com") {
-//             if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
-//             frm.set_value('sales_team', [{
-//                 'sales_person': 'Mohammad Waseem'
-//             }]);
-//             frm.refresh_field('sales_team');
-//         }
-//     }
-// }
-// });
 
 
+frappe.ui.form.on('Sales Order', {
+    setup: function(frm) {
+        if (!frappe.user.has_role('System Manager')) {
+        frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['Sales Person', 'employee', '=', "HR-EMP-00036"]
+                ]
+            };
+        };
 
-// frappe.ui.form.on('Sales Order', {
-//     setup: function(frm) {
-//         if (!frappe.user.has_role('System Manager')) {
-//         frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
-//             return {
-//                 filters: [
-//                     ['Sales Person', 'employee', '=', "HR-EMP-00007"]
-//                 ]
-//             };
-//         };
-
-//         frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
-//             return {
-//                 filters: [
-//                     ['employee', '=', "HR-EMP-00007"]
-//                 ]
-//             };
-//         };
-//     }
-//     },
-//     onload: function(frm) {
-//         if (frappe.session.user === "m.salim@sattcsa.com") {
-//             if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
-//             frm.set_value('sales_team', [{
-//                 'sales_person': 'Muhammad Saleem Riaz'
-//             }]);
-//             frm.refresh_field('sales_team');
-//         }
-//     }
-//     }
-// });
-
-
-// frappe.ui.form.on('Sales Order', {
-//     setup: function(frm) {
-//         if (!frappe.user.has_role('System Manager')) {
-//         frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
-//             return {
-//                 filters: [
-//                     ['Sales Person', 'employee', '=', "HR-EMP-00040"]
-//                 ]
-//             };
-//         };
-
-//         frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
-//             return {
-//                 filters: [
-//                     ['employee', '=', "HR-EMP-00040"]
-//                 ]
-//             };
-//         };
-//     }
-//     },
-//     onload: function(frm) {
-//         if (frappe.session.user === "h.fouaid@sattcsa.com") {
-//             if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
-//             frm.set_value('sales_team', [{
-//                 'sales_person': 'Hamdi Fuad'
-//             }]);
-//             frm.refresh_field('sales_team');
-//         }
-//     }
-//     }
-// });
+        frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['employee', '=', "HR-EMP-00036"]
+                ]
+            };
+        };
+    }
+    },
+    onload: function(frm) {
+        if (frappe.session.user === "w.hussain@sattcsa.com") {
+            if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
+            frm.set_value('sales_team', [{
+                'sales_person': 'Mohammad Waseem'
+            }]);
+            frm.refresh_field('sales_team');
+        }
+    }
+}
+});
 
 
-// frappe.ui.form.on('Sales Order', {
-//     setup: function(frm) {
-//         if (!frappe.user.has_role('System Manager')) {
-//         frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
-//             return {
-//                 filters: [
-//                     ['Sales Person', 'employee', '=', "HR-EMP-00005"]
-//                 ]
-//             };
-//         };
 
-//         frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
-//             return {
-//                 filters: [
-//                     ['employee', '=', "HR-EMP-00005"]
-//                 ]
-//             };
-//         };
-//     }
-//     },
-//     onload: function(frm) {
-//         if (frappe.session.user === "s.ahmed@sattcsa.com") {
-//             if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
-//             frm.set_value('sales_team', [{
-//                 'sales_person': 'Sarfaraz Ahmed Haque'
-//             }]);
-//             frm.refresh_field('sales_team');
-//         }
-//     }
-//     }
-// });
+frappe.ui.form.on('Sales Order', {
+    setup: function(frm) {
+        if (!frappe.user.has_role('System Manager')) {
+        frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['Sales Person', 'employee', '=', "HR-EMP-00007"]
+                ]
+            };
+        };
+
+        frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['employee', '=', "HR-EMP-00007"]
+                ]
+            };
+        };
+    }
+    },
+    onload: function(frm) {
+        if (frappe.session.user === "m.salim@sattcsa.com") {
+            if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
+            frm.set_value('sales_team', [{
+                'sales_person': 'Muhammad Saleem Riaz'
+            }]);
+            frm.refresh_field('sales_team');
+        }
+    }
+    }
+});
+
+
+frappe.ui.form.on('Sales Order', {
+    setup: function(frm) {
+        if (!frappe.user.has_role('System Manager')) {
+        frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['Sales Person', 'employee', '=', "HR-EMP-00040"]
+                ]
+            };
+        };
+
+        frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['employee', '=', "HR-EMP-00040"]
+                ]
+            };
+        };
+    }
+    },
+    onload: function(frm) {
+        if (frappe.session.user === "h.fouaid@sattcsa.com") {
+            if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
+            frm.set_value('sales_team', [{
+                'sales_person': 'Hamdi Fuad'
+            }]);
+            frm.refresh_field('sales_team');
+        }
+    }
+    }
+});
+
+
+frappe.ui.form.on('Sales Order', {
+    setup: function(frm) {
+        if (!frappe.user.has_role('System Manager')) {
+        frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['Sales Person', 'employee', '=', "HR-EMP-00005"]
+                ]
+            };
+        };
+
+        frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                    ['employee', '=', "HR-EMP-00005"]
+                ]
+            };
+        };
+    }
+    },
+    onload: function(frm) {
+        if (frappe.session.user === "s.ahmed@sattcsa.com") {
+            if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
+            frm.set_value('sales_team', [{
+                'sales_person': 'Sarfaraz Ahmed Haque'
+            }]);
+            frm.refresh_field('sales_team');
+        }
+    }
+    }
+});
