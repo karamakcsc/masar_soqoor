@@ -18,138 +18,138 @@ frappe.ui.form.on('Sales Invoice', {
 
 
 
-frappe.ui.form.on('Sales Invoice', {
-  setup: function(frm) {
-      if (frm.doc.docstatus != 1) {
-          frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
-              return {
-                  filters: [
-                      ['Sales Person', 'employee', '=', "HR-EMP-00005"]
-                  ]
-              };
-          };
+// frappe.ui.form.on('Sales Invoice', {
+//   setup: function(frm) {
+//       if (frm.doc.docstatus != 1) {
+//           frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
+//               return {
+//                   filters: [
+//                       ['Sales Person', 'employee', '=', "HR-EMP-00005"]
+//                   ]
+//               };
+//           };
 
-          frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
-              return {
-                  filters: [
-                      ['employee', '=', "HR-EMP-00005"]
-                  ]
-              };
-          };
-      }
-  }
+//           frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
+//               return {
+//                   filters: [
+//                       ['employee', '=', "HR-EMP-00005"]
+//                   ]
+//               };
+//           };
+//       }
+//   }
 
-});
+// });
 
-frappe.ui.form.on('Sales Invoice', {
-  setup: function(frm) {
-      if (frm.doc.docstatus != 1) {
-          frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
-              return {
-                  filters: [
-                      ['Sales Person', 'employee', '=', "HR-EMP-00040"]
-                  ]
-              };
-          };
+// frappe.ui.form.on('Sales Invoice', {
+//   setup: function(frm) {
+//       if (frm.doc.docstatus != 1) {
+//           frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
+//               return {
+//                   filters: [
+//                       ['Sales Person', 'employee', '=', "HR-EMP-00040"]
+//                   ]
+//               };
+//           };
 
-          frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
-              return {
-                  filters: [
-                      ['employee', '=', "HR-EMP-00040"]
-                  ]
-              };
-          };
-      }
-  }
-});
-
-
-
-frappe.ui.form.on('Sales Invoice', {
-  setup: function(frm) {
-      if (frm.doc.docstatus != 1) {
-          frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
-              return {
-                  filters: [
-                      ['Sales Person', 'employee', '=', "HR-EMP-00037"]
-                  ]
-              };
-          };
-
-          frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
-              return {
-                  filters: [
-                      ['employee', '=', "HR-EMP-00037"]
-                  ]
-              };
-          };
-      }
-  }
-
-});
+//           frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
+//               return {
+//                   filters: [
+//                       ['employee', '=', "HR-EMP-00040"]
+//                   ]
+//               };
+//           };
+//       }
+//   }
+// });
 
 
 
-frappe.ui.form.on('Sales Invoice', {
-  setup: function(frm) {
-      if (frm.doc.docstatus != 1) {
-          frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
-              return {
-                  filters: [
-                      ['Sales Person', 'employee', '=', "HR-EMP-00036"]
-                  ]
-              };
-          };
+// frappe.ui.form.on('Sales Invoice', {
+//   setup: function(frm) {
+//       if (frm.doc.docstatus != 1) {
+//           frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
+//               return {
+//                   filters: [
+//                       ['Sales Person', 'employee', '=', "HR-EMP-00037"]
+//                   ]
+//               };
+//           };
 
-          frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
-              return {
-                  filters: [
-                      ['employee', '=', "HR-EMP-00036"]
-                  ]
-              };
-          };
-      }
-  }
+//           frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
+//               return {
+//                   filters: [
+//                       ['employee', '=', "HR-EMP-00037"]
+//                   ]
+//               };
+//           };
+//       }
+//   }
 
-});
-
-
-frappe.ui.form.on('Sales Invoice', {
-  setup: function(frm) {
-      if (frm.doc.docstatus != 1) {
-          frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
-              return {
-                  filters: [
-                      ['Sales Person', 'employee', '=', "HR-EMP-00007"]
-                  ]
-              };
-          };
-
-          frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
-              return {
-                  filters: [
-                      ['employee', '=', "HR-EMP-00007"]
-                  ]
-              };
-          };
-      }
-  }
-});
+// });
 
 
-frappe.ui.form.on("Sales Invoice", {
-  payment_type: function(frm) {
-      if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Sales Manager') && !frappe.user.has_role('System Manager') && !frappe.user.has_role('Sales User')&& frappe.user.has_role('Stock User')) {
-          if (frm.doc.payment_type === 'Cash') {
-              frm.set_value('is_pos', 1);
-          } else {
-              frm.set_value('is_pos', 0);
-          }
+
+// frappe.ui.form.on('Sales Invoice', {
+//   setup: function(frm) {
+//       if (frm.doc.docstatus != 1) {
+//           frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
+//               return {
+//                   filters: [
+//                       ['Sales Person', 'employee', '=', "HR-EMP-00036"]
+//                   ]
+//               };
+//           };
+
+//           frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
+//               return {
+//                   filters: [
+//                       ['employee', '=', "HR-EMP-00036"]
+//                   ]
+//               };
+//           };
+//       }
+//   }
+
+// });
+
+
+// frappe.ui.form.on('Sales Invoice', {
+//   setup: function(frm) {
+//       if (frm.doc.docstatus != 1) {
+//           frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
+//               return {
+//                   filters: [
+//                       ['Sales Person', 'employee', '=', "HR-EMP-00007"]
+//                   ]
+//               };
+//           };
+
+//           frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
+//               return {
+//                   filters: [
+//                       ['employee', '=', "HR-EMP-00007"]
+//                   ]
+//               };
+//           };
+//       }
+//   }
+// });
+
+
+// frappe.ui.form.on("Sales Invoice", {
+//   payment_type: function(frm) {
+//       if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Sales Manager') && !frappe.user.has_role('System Manager') && !frappe.user.has_role('Sales User')&& frappe.user.has_role('Stock User')) {
+//           if (frm.doc.payment_type === 'Cash') {
+//               frm.set_value('is_pos', 1);
+//           } else {
+//               frm.set_value('is_pos', 0);
+//           }
           
-          frm.refresh_fields();
-      }
-  }
-});
+//           frm.refresh_fields();
+//       }
+//   }
+// });
 
 
 frappe.ui.form.on("Sales Invoice","onload", function(frm) {
