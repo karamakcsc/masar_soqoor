@@ -14,7 +14,7 @@ frappe.ui.form.on("Sales Order", "validate", function(frm, cdt, cdn) {
 
 frappe.ui.form.on("Sales Order","onload", function(frm) {
 
-    if (!frappe.user.has_role('System Manager') && frappe.user.has_role('Showroom User')) {
+    if (!frappe.user.has_role('System Manager') && frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User')) {
   
       frm.toggle_display("naming_series", false);
       frm.toggle_display("incoterm", false);
