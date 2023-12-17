@@ -142,13 +142,26 @@ frappe.ui.form.on("Sales Invoice", {
       if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('Sales Manager') && !frappe.user.has_role('System Manager') && !frappe.user.has_role('Sales User')&& frappe.user.has_role('Stock User')) {
           if (frm.doc.payment_type === 'Cash') {
               frm.set_value('is_pos', 1);
+              frm.set_value('Standard','pos_profile');
           } else {
               frm.set_value('is_pos', 0);
           }
           
           frm.refresh_fields();
       }
-  }
+  },
+  onload: function(frm) {
+    if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('Sales Manager') && !frappe.user.has_role('System Manager') && !frappe.user.has_role('Sales User')&& frappe.user.has_role('Stock User')) {
+        if (frm.doc.payment_type === 'Cash') {
+            frm.set_value('is_pos', 1);
+            frm.set_value('Standard','pos_profile');
+        } else {
+            frm.set_value('is_pos', 0);
+        }
+        
+        frm.refresh_fields();
+    }
+}
 });
 
 
