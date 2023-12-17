@@ -158,7 +158,8 @@ frappe.ui.form.on("Sales Invoice", {
         } else {
             frm.set_value('is_pos', 0);
         }
-        
+        var df=frappe.meta.get_docfield("Sales Invoice", "is_return",frm.doc.name);
+    df.read_only=1;
         frm.refresh_fields();
     }
 }
