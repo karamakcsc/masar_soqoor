@@ -161,7 +161,7 @@ frappe.ui.form.on('Customer', {
     }
     },
     onload: function(frm) {
-        if (frappe.session.user === "m.emad@sattcsa.com") {
+        if (frappe.session.user === "m.salim@sattcsa.com") {
             if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
             frm.set_value('sales_team', [{
                 'sales_person': 'Muhammad Saleem Riaz'
