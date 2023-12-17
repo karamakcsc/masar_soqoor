@@ -72,32 +72,36 @@ frappe.ui.form.on("Customer", "validate", function(frm) {
 frappe.ui.form.on('Customer', {
     setup: function(frm) {
         if (!frappe.user.has_role('System Manager')) {
-        frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
-            return {
-                filters: [
-                    ['Sales Person', 'employee', '=', "HR-EMP-00007"]
-                ]
+            frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
+                return {
+                    filters: [
+                        ['Sales Person', 'employee', '=', "HR-EMP-00037"]
+                    ]
+                };
             };
-        };
 
-        frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
-            return {
-                filters: [
-                    ['employee', '=', "HR-EMP-00007"]
-                ]
+            frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
+                return {
+                    filters: [
+                        ['employee', '=', "HR-EMP-00037"]
+                    ]
+                };
             };
-        };
+        }
+    },
+    onload: function(frm) {
+        if (frappe.session.user === "m.emad@sattcsa.com") {
+            // Check if sales_team field is empty before setting the value
+            if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
+                frm.set_value('sales_team', [{
+                    'sales_person': 'Musallam Emad'
+                }]);
+                frm.refresh_field('sales_team');
+            }
+        }
     }
-    }
-    // onload: function(frm) {
-    //     if (frappe.session.user === "m.salim@sattcsa.com") {
-    //         frm.set_value('sales_team', [{
-    //             'sales_person': 'Muhammad Saleem Riaz'
-    //         }]);
-    //         frm.refresh_field('sales_team');
-    //     }
-    // }
 });
+
 
 
 
@@ -121,15 +125,17 @@ frappe.ui.form.on('Customer', {
             };
         };
     }
+    },
+    onload: function(frm) {
+        if (frappe.session.user === "w.hussain@sattcsa.com") {
+            if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
+            frm.set_value('sales_team', [{
+                'sales_person': 'Mohammad Waseem'
+            }]);
+            frm.refresh_field('sales_team');
+        }
     }
-    // onload: function(frm) {
-    //     if (frappe.session.user === "w.hussain@sattcsa.com") {
-    //         frm.set_value('sales_team', [{
-    //             'sales_person': 'Mohammad Waseem'
-    //         }]);
-    //         frm.refresh_field('sales_team');
-    //     }
-    // }
+}
 });
 
 
@@ -153,15 +159,17 @@ frappe.ui.form.on('Customer', {
             };
         };
     }
+    },
+    onload: function(frm) {
+        if (frappe.session.user === "m.emad@sattcsa.com") {
+            if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
+            frm.set_value('sales_team', [{
+                'sales_person': 'Musallam Emad'
+            }]);
+            frm.refresh_field('sales_team');
+        }
     }
-    // onload: function(frm) {
-    //     if (frappe.session.user === "m.emad@sattcsa.com") {
-    //         frm.set_value('sales_team', [{
-    //             'sales_person': 'Musallam Emad'
-    //         }]);
-    //         frm.refresh_field('sales_team');
-    //     }
-    // }
+    }
 });
 
 
@@ -184,15 +192,17 @@ frappe.ui.form.on('Customer', {
             };
         };
     }
+    },
+    onload: function(frm) {
+        if (frappe.session.user === "h.fouaid@sattcsa.com") {
+            if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
+            frm.set_value('sales_team', [{
+                'sales_person': 'Hamdi Fuad'
+            }]);
+            frm.refresh_field('sales_team');
+        }
     }
-    // onload: function(frm) {
-    //     if (frappe.session.user === "h.fouaid@sattcsa.com") {
-    //         frm.set_value('sales_team', [{
-    //             'sales_person': 'Hamdi Fuad'
-    //         }]);
-    //         frm.refresh_field('sales_team');
-    //     }
-    // }
+    }
 });
 
 
@@ -215,13 +225,15 @@ frappe.ui.form.on('Customer', {
             };
         };
     }
+    },
+    onload: function(frm) {
+        if (frappe.session.user === "s.ahmed@sattcsa.com") {
+            if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
+            frm.set_value('sales_team', [{
+                'sales_person': 'Sarfaraz Ahmed Haque'
+            }]);
+            frm.refresh_field('sales_team');
+        }
     }
-    // onload: function(frm) {
-    //     if (frappe.session.user === "s.ahmed@sattcsa.com") {
-    //         frm.set_value('sales_team', [{
-    //             'sales_person': 'Sarfaraz Ahmed Haque'
-    //         }]);
-    //         frm.refresh_field('sales_team');
-    //     }
-    // }
+    }
 });

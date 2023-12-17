@@ -139,7 +139,7 @@ frappe.ui.form.on('Sales Invoice', {
 
 frappe.ui.form.on("Sales Invoice", {
   payment_type: function(frm) {
-      if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('System Manager')) {
+      if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('System Manager') && !frappe.user.has_role('Sales User')&& frappe.user.has_role('Stock User')) {
           if (frm.doc.payment_type === 'Cash') {
               frm.set_value('is_pos', 1);
           } else {
@@ -154,7 +154,7 @@ frappe.ui.form.on("Sales Invoice", {
 
 frappe.ui.form.on("Sales Invoice","onload", function(frm) {
 
-  if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('System Manager')) {
+  if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('System Manager')&& frappe.user.has_role('Stock User')) {
 
     frm.toggle_display("naming_series", false);
     frm.toggle_display("set_posting_time", false);
@@ -216,7 +216,7 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
 
 frappe.ui.form.on("Sales Invoice Item", "refresh", function(frm, cdt, cdn) {
   var d = locals[cdt][cdn];
-  if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('System Manager')) {
+  if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('System Manager') && !frappe.user.has_role('Sales User')&& frappe.user.has_role('Stock User')) {
     cur_frm.set_value('warehouse', 'Showroom - SATC')
      cur_frm.refresh_field();
    }
@@ -260,7 +260,7 @@ frappe.ui.form.on("Sales Invoice", {
 
 frappe.ui.form.on("Sales Invoice","onload", function(frm) {
 
-    if (frappe.user.has_role('Sales User') && !frappe.user.has_role('System Manager')) {
+    if (frappe.user.has_role('Sales User') && !frappe.user.has_role('System Manager')&& frappe.user.has_role('Stock User')) {
   
       frm.toggle_display("naming_series", false);
       frm.toggle_display("set_posting_time", false);
@@ -299,8 +299,8 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
       df.read_only=1;
       var df=frappe.meta.get_docfield("Sales Invoice", "taxes",frm.doc.name);
       df.read_only=1;
-      var df=frappe.meta.get_docfield("Sales Invoice", "set_warehouse",frm.doc.name);
-      df.read_only=1;
+    //   var df=frappe.meta.get_docfield("Sales Invoice", "set_warehouse",frm.doc.name);
+    //   df.read_only=1;
       var df=frappe.meta.get_docfield("Sales Invoice", "is_debit_note",frm.doc.name);
       df.read_only=1;
       var df=frappe.meta.get_docfield("Sales Invoice", "update_billed_amount_in_delivery_note",frm.doc.name);
