@@ -38,8 +38,8 @@ frappe.ui.form.on("Sales Order","onload", function(frm) {
       df.read_only=1;
       var df=frappe.meta.get_docfield("Sales Order", "taxes",frm.doc.name);
       df.read_only=1;
-    //   var df=frappe.meta.get_docfield("Sales Order", "set_warehouse",frm.doc.name);
-    //   df.read_only=1;
+      var df=frappe.meta.get_docfield("Sales Order", "set_warehouse",frm.doc.name);
+      df.read_only=1;
       var df=frappe.meta.get_docfield("Sales Order", "order_type",frm.doc.name);
       df.read_only=1;
       var df=frappe.meta.get_docfield("Sales Order", "currency",frm.doc.name);
