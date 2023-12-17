@@ -1,9 +1,10 @@
 frappe.ui.form.on("Quotation Item", "refresh", function(frm, cdt, cdn) {
     var d = locals[cdt][cdn];
-    if (frappe.user.has_role('Showroom User')&& !frappe.user.has_role('System Manager')) {
+    if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('System Manager')) {
   cur_frm.set_value('warehouse', 'Showroom - SATC')
    cur_frm.refresh_field();
  }
+
 });
 
 

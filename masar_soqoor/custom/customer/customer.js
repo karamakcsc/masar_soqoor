@@ -146,7 +146,7 @@ frappe.ui.form.on('Customer', {
         frm.fields_dict['sales_team'].get_query = function(doc, cdt, cdn) {
             return {
                 filters: [
-                    ['Sales Person', 'employee', '=', "HR-EMP-00037"]
+                    ['Sales Person', 'employee', '=', "HR-EMP-00007"]
                 ]
             };
         };
@@ -154,7 +154,7 @@ frappe.ui.form.on('Customer', {
         frm.fields_dict['sales_team'].grid.get_field('sales_person').get_query = function(doc, cdt, cdn) {
             return {
                 filters: [
-                    ['employee', '=', "HR-EMP-00037"]
+                    ['employee', '=', "HR-EMP-00007"]
                 ]
             };
         };
@@ -164,7 +164,7 @@ frappe.ui.form.on('Customer', {
         if (frappe.session.user === "m.emad@sattcsa.com") {
             if (!frm.doc.sales_team || frm.doc.sales_team.length === 0) {
             frm.set_value('sales_team', [{
-                'sales_person': 'Musallam Emad'
+                'sales_person': 'Muhammad Saleem Riaz'
             }]);
             frm.refresh_field('sales_team');
         }
