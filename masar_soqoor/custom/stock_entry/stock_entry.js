@@ -20,6 +20,8 @@ frappe.ui.form.on("Stock Entry", "onload", function(frm) {
         frm.toggle_display("total_outgoing_value", false);
         frm.toggle_display("total_incoming_value", false);
         frm.toggle_display("value_difference", false);
+        frm.toggle_display("accounting_dimensions_section", false);
+        
 
         frm.refresh_fields();
     }
