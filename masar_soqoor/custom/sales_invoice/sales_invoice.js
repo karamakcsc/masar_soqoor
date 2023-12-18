@@ -139,7 +139,7 @@ frappe.ui.form.on('Sales Invoice', {
 
 frappe.ui.form.on("Sales Invoice", {
   payment_type: function(frm) {
-      if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('System Manager') && frappe.user.has_role('Stock User')) {
+      if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User')) {
           if (frm.doc.payment_type === 'Cash') {
               frm.set_value('is_pos', 1);
               frm.set_value('Standard','pos_profile');
@@ -152,7 +152,7 @@ frappe.ui.form.on("Sales Invoice", {
       }
   },
   onload: function(frm) {
-    if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('System Manager') && frappe.user.has_role('Stock User')) {
+    if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User')) {
         if (frm.doc.payment_type === 'Cash') {
             frm.set_value('is_pos', 1);
             frm.set_value('Standard','pos_profile');
@@ -169,7 +169,7 @@ frappe.ui.form.on("Sales Invoice", {
 
 frappe.ui.form.on("Sales Invoice","onload", function(frm) {
 
-  if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('System Manager')&& frappe.user.has_role('Stock User')) {
+  if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User')) {
 
     frm.toggle_display("naming_series", false);
     frm.toggle_display("set_posting_time", false);
@@ -335,8 +335,8 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
       var df=frappe.meta.get_docfield("Sales Invoice", "territory",frm.doc.name);
       df.read_only=1;
       
-      frm.set_value('tax_category', 'VAT_15')
-      frm.set_value('taxes_and_charges', 'KSA VAT 15% - SATC')
+      frm.set_value('tax_category', 'VAT_15');
+      frm.set_value('taxes_and_charges', 'KSA VAT 15% - SATC');
       frm.set_value('update_stock', 0);
       frm.set_value('payment_type',"On Account");
       frm.set_value('is_pos', 0);
