@@ -147,7 +147,7 @@ frappe.ui.form.on("Sales Invoice", {
               frm.set_value('is_pos', 0);
           }
           var df=frappe.meta.get_docfield("Sales Invoice", "is_return",frm.doc.name);
-    df.read_only=1;
+            df.read_only=1;
           frm.refresh_fields();
       }
   },
@@ -160,7 +160,7 @@ frappe.ui.form.on("Sales Invoice", {
             frm.set_value('is_pos', 0);
         }
         var df=frappe.meta.get_docfield("Sales Invoice", "is_return",frm.doc.name);
-    df.read_only=1;
+        df.read_only=1;
         frm.refresh_fields();
     }
 }
@@ -277,7 +277,7 @@ frappe.ui.form.on("Sales Invoice", {
 
 frappe.ui.form.on("Sales Invoice","onload", function(frm) {
 
-    if (frappe.user.has_role('Sales User') || frappe.user.has_role('Sales Manager') && !frappe.user.has_role('System Manager') && !frappe.user.has_role('Showroom User')) {
+    if (frappe.user.has_role('Sales User')) {
   
       frm.toggle_display("naming_series", false);
       frm.toggle_display("set_posting_time", false);
