@@ -23,6 +23,8 @@ frappe.ui.form.on("Sales Order","onload", function(frm) {
         frm.toggle_display("additional_info_section", false);
         frm.toggle_display("payment_schedule", false);
         frm.toggle_display("disable_rounded_total", false);
+        frm.toggle_display("sec_tax_breakup", false);
+        
 
         var df=frappe.meta.get_docfield("Sales Order", "naming_series",frm.doc.name);
         df.read_only=1;
