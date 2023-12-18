@@ -1,5 +1,5 @@
 frappe.ui.form.on("Stock Entry", "onload", function(frm) {
-    if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User') ) {
+    if (!frappe.user.has_role('System Manager') ) {
         var df_customer_group = frappe.meta.get_docfield("Stock Entry", "stock_entry_type", frm.doc.name);
         df_customer_group.read_only = 1;
         var df_customer_group = frappe.meta.get_docfield("Stock Entry", "from_warehouse", frm.doc.name);
@@ -20,11 +20,6 @@ frappe.ui.form.on("Stock Entry", "onload", function(frm) {
         frm.toggle_display("total_outgoing_value", false);
         frm.toggle_display("total_incoming_value", false);
         frm.toggle_display("value_difference", false);
-
-
-        frm.set_value('stock_entry_type', "Material Transfer");
-        frm.set_value('from_warehouse', 'Goods In Transit - SATC')
-        frm.set_value('to_warehouse', 'Showroom - SATC')
 
         frm.refresh_fields();
     }
@@ -50,31 +45,22 @@ frappe.ui.form.on('Stock Entry', {
 
 frappe.ui.form.on("Stock Entry", "onload", function(frm) {
     if (frappe.user.has_role('Sales User')) {
-        var df_customer_group = frappe.meta.get_docfield("Stock Entry", "stock_entry_type", frm.doc.name);
-        df_customer_group.read_only = 1;
-        var df_customer_group = frappe.meta.get_docfield("Stock Entry", "from_warehouse", frm.doc.name);
-        df_customer_group.read_only = 1;
-        var df_customer_group = frappe.meta.get_docfield("Stock Entry", "to_warehouse", frm.doc.name);
-        df_customer_group.read_only = 1;
-
-        
-        frm.toggle_display("get_stock_and_rate", false);
-        frm.toggle_display("set_posting_time", false);
-        frm.toggle_display("inspection_required", false);
-        frm.toggle_display("apply_putaway_rule", false);
-        frm.toggle_display("add_to_transit", false);
-        frm.toggle_display("from_bom", false);
-        frm.toggle_display("additional_costs_section", false);
-        frm.toggle_display("additional_costs", false);
-        frm.toggle_display("total_additional_costs", false);
-        frm.toggle_display("total_outgoing_value", false);
-        frm.toggle_display("total_incoming_value", false);
-        frm.toggle_display("value_difference", false);
-
-
+     
         frm.set_value('stock_entry_type', "Material Transfer");
         frm.set_value('from_warehouse', 'Goods In Transit - SATC')
         // frm.set_value('to_warehouse', 'Showroom - SATC')
+
+        frm.refresh_fields();
+    }
+});
+
+
+frappe.ui.form.on("Stock Entry", "onload", function(frm) {
+    if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User') ) {
+     
+        frm.set_value('stock_entry_type', "Material Transfer");
+        frm.set_value('from_warehouse', 'Goods In Transit - SATC')
+        frm.set_value('to_warehouse', 'Showroom - SATC')
 
         frm.refresh_fields();
     }
