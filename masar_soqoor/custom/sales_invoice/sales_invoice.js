@@ -142,7 +142,7 @@ frappe.ui.form.on("Sales Invoice", {
       if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User')) {
           if (frm.doc.payment_type === 'Cash') {
               frm.set_value('is_pos', 1);
-              frm.set_value('Standard','pos_profile');
+              frm.set_value('pos_profile','Standard');
           } else {
               frm.set_value('is_pos', 0);
           }
@@ -155,7 +155,7 @@ frappe.ui.form.on("Sales Invoice", {
     if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User')) {
         if (frm.doc.payment_type === 'Cash') {
             frm.set_value('is_pos', 1);
-            frm.set_value('Standard','pos_profile');
+            frm.set_value('pos_profile','Standard');
         } else {
             frm.set_value('is_pos', 0);
         }
@@ -224,7 +224,7 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
     // frm.set_value('tax_category', 'VAT_15');
     // frm.set_value('taxes_and_charges', 'KSA VAT 15% - SATC');
     frm.set_value('update_stock', 1);
-    frm.set_value('Standard','pos_profile');
+    frm.set_value('pos_profile','Standard');
     
   }
 });
@@ -391,6 +391,7 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
     frm.toggle_display("redeem_loyalty_points", false);
     frm.toggle_display("shipping_rule", false);
     frm.toggle_display("payment_schedule_section", false);
+    frm.toggle_display("time_sheet_list", false);
     
     
     var df=frappe.meta.get_docfield("Sales Invoice", "update_stock",frm.doc.name);
