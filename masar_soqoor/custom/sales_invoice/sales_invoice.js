@@ -316,8 +316,6 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
       df.read_only=1;
       var df=frappe.meta.get_docfield("Sales Invoice", "taxes",frm.doc.name);
       df.read_only=1;
-    //   var df=frappe.meta.get_docfield("Sales Invoice", "set_warehouse",frm.doc.name);
-    //   df.read_only=1;
       var df=frappe.meta.get_docfield("Sales Invoice", "is_debit_note",frm.doc.name);
       df.read_only=1;
       var df=frappe.meta.get_docfield("Sales Invoice", "update_billed_amount_in_delivery_note",frm.doc.name);
