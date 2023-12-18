@@ -64,12 +64,19 @@ frappe.ui.form.on("Sales Order","onload", function(frm) {
 
 
 
-  frappe.ui.form.on("Sales Order","onload", function(frm) {
-
-    if (frappe.user.has_role('Sales User')  && frappe.user.has_role('Sales Manager')) {
+  frappe.ui.form.on("Sales Order", {
+    onload: function(frm) {
+      customScript(frm);
+    },
+    refresh: function(frm) {
+      customScript(frm);
+    }
+  });
   
-      frm.set_value('tax_category', 'VAT_15')
-      frm.set_value('taxes_and_charges', 'KSA VAT 15% - SATC')
+  function customScript(frm) {
+    if (frappe.user.has_role('Sales User') && frappe.user.has_role('Sales Manager')) {
+      frm.set_value('tax_category', 'VAT_15');
+      frm.set_value('taxes_and_charges', 'KSA VAT 15% - SATC');
       setTimeout(() => {
         // frm.remove_custom_button('Update Items');
         frm.remove_custom_button('Purchase Order', 'Create');
@@ -82,11 +89,11 @@ frappe.ui.form.on("Sales Order","onload", function(frm) {
         frm.remove_custom_button('Project', 'Create');
         frm.remove_custom_button('Pick List', 'Create');
         frm.remove_custom_button('Work Order', 'Create');
-        frm.remove_custom_button('Quotation','Get Items From');
-    }, 10);
-
+        frm.remove_custom_button('Quotation', 'Get Items From');
+      }, 10);
     }
-  });
+  }
+  
 
 
 
