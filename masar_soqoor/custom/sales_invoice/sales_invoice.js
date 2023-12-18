@@ -277,7 +277,7 @@ frappe.ui.form.on("Sales Invoice", {
 
 frappe.ui.form.on("Sales Invoice","onload", function(frm) {
 
-    if (frappe.user.has_role('Sales User') || frappe.user.has_role('Sales Manager') && !frappe.user.has_role('System Manager')) {
+    if (frappe.user.has_role('Sales User') || frappe.user.has_role('Sales Manager') && !frappe.user.has_role('System Manager') && !frappe.user.has_role('Showroom User')) {
   
       frm.toggle_display("naming_series", false);
       frm.toggle_display("set_posting_time", false);
