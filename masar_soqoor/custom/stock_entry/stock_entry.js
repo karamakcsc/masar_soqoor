@@ -7,7 +7,6 @@ frappe.ui.form.on("Stock Entry", "onload", function(frm) {
         var df_customer_group = frappe.meta.get_docfield("Stock Entry", "to_warehouse", frm.doc.name);
         df_customer_group.read_only = 1;
 
-        
         frm.toggle_display("get_stock_and_rate", false);
         frm.toggle_display("set_posting_time", false);
         frm.toggle_display("inspection_required", false);
@@ -21,8 +20,6 @@ frappe.ui.form.on("Stock Entry", "onload", function(frm) {
         frm.toggle_display("total_incoming_value", false);
         frm.toggle_display("value_difference", false);
         
-        
-
         frm.refresh_fields();
     }
 });
