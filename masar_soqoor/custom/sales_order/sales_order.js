@@ -102,7 +102,7 @@ frappe.ui.form.on('Sales Order', {
 
 frappe.ui.form.on('Sales Order', {
     refresh(frm) {
-        if ( !frappe.user.has_role('System Manager') && !frappe.user.has_role('Showroom User') && frappe.user.has_role('Sales User') && frappe.user.has_role('Sales Manager')) {
+        if ( !frappe.user.has_role('System Manager') && frappe.user.has_role('Sales User') && frappe.user.has_role('Sales Manager')) {
         setTimeout(() => {
             // frm.remove_custom_button('Update Items');
             frm.remove_custom_button('Purchase Order', 'Create');
