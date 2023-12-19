@@ -140,6 +140,7 @@ frappe.ui.form.on('Sales Invoice', {
 frappe.ui.form.on("Sales Invoice", {
   payment_type: function(frm) {
       if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User')) {
+        if(frm.doc.docstatus !=1){
           if (frm.doc.payment_type === 'Cash') {
               frm.set_value('is_pos', 1);
               frm.set_value('pos_profile','Standard');
@@ -150,9 +151,11 @@ frappe.ui.form.on("Sales Invoice", {
             df.read_only=1;
           frm.refresh_fields();
       }
+    }
   },
   onload: function(frm) {
     if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User')) {
+      if(frm.doc.docstatus !=1){
         if (frm.doc.payment_type === 'Cash') {
             frm.set_value('is_pos', 1);
             frm.set_value('pos_profile','Standard');
@@ -163,6 +166,7 @@ frappe.ui.form.on("Sales Invoice", {
         df.read_only=1;
         frm.refresh_fields();
     }
+  }
 }
 });
 //siam
@@ -170,11 +174,11 @@ frappe.ui.form.on("Sales Invoice", {
 frappe.ui.form.on("Sales Invoice","onload", function(frm) {
 
   if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User')) {
-
+    if(frm.doc.docstatus !=1){
     frm.set_value('is_pos', 1);
     frm.set_value('update_stock', 1);
     frm.set_value('pos_profile','Standard');
-    
+    }
   }
 });
 
@@ -183,9 +187,11 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
 frappe.ui.form.on("Sales Invoice Item", "refresh", function(frm, cdt, cdn) {
   var d = locals[cdt][cdn];
   if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('System Manager') && frappe.user.has_role('Stock User')) {
+    if(frm.doc.docstatus !=1){
     cur_frm.set_value('warehouse', 'Showroom - SATC')
      cur_frm.refresh_field();
-   }
+    }
+  }
 });
 
 
@@ -227,6 +233,7 @@ frappe.ui.form.on("Sales Invoice", {
 frappe.ui.form.on("Sales Invoice","onload", function(frm) {
 
     if (frappe.user.has_role('Sales User')) {
+      if(frm.doc.docstatus !=1){
 
       var df=frappe.meta.get_docfield("Sales Invoice", "payment_type",frm.doc.name);
       df.read_only=1;
@@ -234,7 +241,7 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
       frm.set_value('update_stock', 0);
       frm.set_value('payment_type',"On Account");
       frm.set_value('is_pos', 0);
-      
+      }
     }
   });
   
