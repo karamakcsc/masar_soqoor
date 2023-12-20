@@ -44,23 +44,25 @@ frappe.ui.form.on('Stock Entry', {
 
 frappe.ui.form.on("Stock Entry", "onload", function(frm) {
     if (frappe.user.has_role('Sales User')) {
-     
+        if(frm.doc.docstatus !=1){
         frm.set_value('stock_entry_type', "Material Transfer");
         frm.set_value('from_warehouse', 'Goods In Transit - SATC')
         // frm.set_value('to_warehouse', 'Showroom - SATC')
 
         frm.refresh_fields();
     }
+}
 });
 
 
 frappe.ui.form.on("Stock Entry", "onload", function(frm) {
     if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User') ) {
-     
+        if(frm.doc.docstatus !=1){
         frm.set_value('stock_entry_type', "Material Transfer");
         frm.set_value('from_warehouse', 'Goods In Transit - SATC')
         frm.set_value('to_warehouse', 'Showroom - SATC')
 
         frm.refresh_fields();
     }
+}
 });
