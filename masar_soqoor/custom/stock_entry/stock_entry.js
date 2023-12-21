@@ -1,7 +1,5 @@
 frappe.ui.form.on("Stock Entry", "onload", function(frm) {
     if (!frappe.user.has_role('System Manager') ) {
-        var df_customer_group = frappe.meta.get_docfield("Stock Entry", "stock_entry_type", frm.doc.name);
-        df_customer_group.read_only = 1;
         var df_customer_group = frappe.meta.get_docfield("Stock Entry", "from_warehouse", frm.doc.name);
         df_customer_group.read_only = 1;
         var df_customer_group = frappe.meta.get_docfield("Stock Entry", "to_warehouse", frm.doc.name);
@@ -65,4 +63,13 @@ frappe.ui.form.on("Stock Entry", "onload", function(frm) {
         frm.refresh_fields();
     }
 }
+});
+
+frappe.ui.form.on("Stock Entry", "onload", function(frm) {
+    if (!frappe.user.has_role('System Manager') && !frappe.user.has_role('Stock Manager') ) {
+        var df_customer_group = frappe.meta.get_docfield("Stock Entry", "stock_entry_type", frm.doc.name);
+        df_customer_group.read_only = 1;
+        
+        frm.refresh_fields();
+    }
 });
