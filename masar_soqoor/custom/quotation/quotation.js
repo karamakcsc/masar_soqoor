@@ -88,3 +88,8 @@ frappe.ui.form.on('Quotation', {
     }
 }
 });
+
+
+frappe.ui.form.on('Quotation', 'validate', function(frm) {
+	cur_frm.set_value("valid_till",frappe.datetime.add_days(frappe.datetime.nowdate(), 7))
+});
