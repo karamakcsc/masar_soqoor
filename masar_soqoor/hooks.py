@@ -227,7 +227,7 @@ fixtures = [
                 "Purchase Invoice-custom_section_break_gghad",
                 "Purchase Invoice-custom_cus_dec_no",
                 "Purchase Invoice-custom_cus_dec_date",
-				"Purchase Invoice-custom_port_id",
+				"Purchase Invoice-custom_port_name",
                 "Purchase Invoice-custom_cus_dec_amount",
 				"Purchase Invoice-custom_cus_dec_fee",
                 "Purchase Invoice-custom_cus_dec_tax",
