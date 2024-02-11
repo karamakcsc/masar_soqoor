@@ -14,7 +14,7 @@ frappe.query_reports["Sales Invoice Details"] = {
         },
         {
             "fieldname": "customer",
-            "label": __("Title"),
+            "label": __("Customer"),
             "fieldtype": "Link",
             "options": "Customer",
             "width": 100,
@@ -28,37 +28,45 @@ frappe.query_reports["Sales Invoice Details"] = {
             "width": 100,
             "reqd": 0,
         },
+		// {
+        //     "fieldname": "status",
+        //     "label": __("Status"),
+        //     "fieldtype": "Select",
+        //     "options": [ "", "Draft", "Return" , "Credit Note Issued" , "Submitted" , "Paid" , "Partly Paid" , "Unpaid" , 
+		// "Unpaid and Discounted" , "Partly Paid and Discount" , "Overdue and Discount", "Overdue" , "Cancelled" , "Internal Transfer"],
+        //     "width": 100,
+        //     "reqd": 0,
+        // },
 		{
-            "fieldname": "status",
-            "label": __("Status"),
-            "fieldtype": "Select",
-            "options": [ "", "Draft", "Return" , "Credit Note Issued" , "Submitted" , "Paid" , "Partly Paid" , "Unpaid" , 
-		"Unpaid and Discounted" , "Partly Paid and Discount" , "Overdue and Discount", "Overdue" , "Cancelled" , "Internal Transfer"],
-            "width": 100,
-            "reqd": 0,
-        },
-        {
-            "fieldname": "from",
-            "label": __("From Date"),
-            "fieldtype": "Date",
-            "width": 80,
-            "reqd": 1,
-            // "default": frappe.datetime.add_days(frappe.datetime.year_start(), -1),
-        },
-        {
-            "fieldname": "to",
-            "label": __("To Date"),
-            "fieldtype": "Date",
-            "width": 80,
-            "reqd": 1,
-            // "default": frappe.datetime.year_end(),
-        },
+			"fieldname": "from",
+			"label": __("From Date"),
+			"fieldtype": "Date",
+			"width": 80,
+			"reqd": 1,
+			"default": dateutil.year_start()
+		 },
+		 {
+			"fieldname": "to",
+			"label": __("To Date"),
+			"fieldtype": "Date",
+			"width": 80,
+			"reqd": 1,
+			"default": dateutil.year_end()
+		},
         {
             "fieldname": "is_pos",
             "label": __("Include Payment (POS)"),
             "fieldtype": "Check",
             "width": 100,
             "reqd": 0,
-        }
+        },
+        {
+			"fieldname": "sales_person",
+			"label": __("Sales Person"),
+			"fieldtype": "Link",
+            "options": "Sales Person",
+			"width": 80,
+			"reqd": 0
+		 }
     ]
 };
