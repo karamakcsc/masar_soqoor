@@ -206,8 +206,27 @@ frappe.ui.form.on("Sales Invoice", {
     frm.set_value('naming_series', 'SINV-.YYYY.-')
       refresh_field("naming_series");
     }
-  
+    },
+    onload: function (frm) {
+      if (frm.doc.is_return == 1) {
+      frm.set_value('naming_series', 'SINV-RET-.YYYY.-')
+      refresh_field("naming_series");
     }
+    else {
+    frm.set_value('naming_series', 'SINV-.YYYY.-')
+      refresh_field("naming_series");
+    }
+    },
+    setup: function (frm) {
+      if (frm.doc.is_return == 1) {
+      frm.set_value('naming_series', 'SINV-RET-.YYYY.-')
+      refresh_field("naming_series");
+    }
+    else {
+    frm.set_value('naming_series', 'SINV-.YYYY.-')
+      refresh_field("naming_series");
+    }
+    },
   });
 
 
