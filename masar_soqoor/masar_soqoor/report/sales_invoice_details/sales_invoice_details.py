@@ -21,7 +21,7 @@ def get_data(filters):
     data = frappe.db.sql(f"""        SELECT 
             tsi.name as `Name`  , tsii.delivery_note as `Delivery Note` , tsi.posting_date as  `Posting Date`  , tsi.customer_name as `Customer name` ,
 			tsi.customer as `Customer`  , tsle.warehouse as `warehouse` , tsi.payment_type as `payment Type` , 
-			tsi.grand_total as `Grand Total`, tsi.status as `Status` , tst.sales_person as `Sales Person` , tsle.valuation_rate as `Valuation Rate`
+			tsi.grand_total as `Grand Total`, tsi.status as `Status` , tst.sales_person as `Sales Person` , round(tsle.valuation_rate,3)as `Valuation Rate`
 		FROM 
             `tabSales Invoice` tsi 
 		INNER JOIN `tabStock Ledger Entry` tsle ON tsi.name = tsle.voucher_no 
