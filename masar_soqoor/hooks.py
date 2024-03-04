@@ -231,7 +231,8 @@ fixtures = [
                 "Purchase Invoice-custom_cus_dec_amount",
 				"Purchase Invoice-custom_cus_dec_fee",
                 "Purchase Invoice-custom_cus_dec_tax",
-                "Purchase Invoice-custom_column_break_erius"
+                "Purchase Invoice-custom_column_break_erius",
+                "Vehicle-custom_naming_series"
 
 
                   ]
