@@ -206,7 +206,6 @@ fixtures = [
 				"Purchase Order-section_break_27",
 				"Purchase Order-comments",
 				"Item Attribute Value-abbr_ar",
-				#"Item-kind",
 				"Sales Invoice-payment_type",
                 "Journal Entry Account-employee",
                 "Journal Entry Account-vehicle",
