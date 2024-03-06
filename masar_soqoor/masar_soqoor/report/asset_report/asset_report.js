@@ -12,14 +12,14 @@ frappe.query_reports["Asset Report"] = {
 			"width": 100,
 			"reqd": 0,
 		},
-		{
-			"fieldname": "from",
-			"label": __("From Date"),
-			"fieldtype": "Date",
-			"width": 80,
-			"reqd": 1,
-			"default": dateutil.year_start()
-		},
+		// {
+		// 	"fieldname": "from",
+		// 	"label": __("From Date"),
+		// 	"fieldtype": "Date",
+		// 	"width": 80,
+		// 	"reqd": 1,
+		// 	"default": dateutil.year_start()
+		// },
 		{
 			"fieldname": "to",
 			"label": __("To Date"),
@@ -37,9 +37,10 @@ frappe.query_reports["Asset Report"] = {
 			"reqd": 0,
 		},
 		{
-			"fieldname": "is_existing_asset",
-			"label": __("Is Existing Asset"),
-			"fieldtype": "Check",
+			"fieldname": "location",
+			"label": __("Location"),
+			"fieldtype": "Link",
+			"options": "Location",
 			"width": 100,
 			"reqd": 0,
 		}
