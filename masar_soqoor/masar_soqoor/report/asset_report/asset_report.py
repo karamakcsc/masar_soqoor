@@ -31,7 +31,7 @@ def get_data(filters):
 							FROM tabAsset ta
 								INNER JOIN `tabDepreciation Schedule` tds on ta.name = tds.parent 
 								INNER JOIN `tabAsset Finance Book` tafb on ta.name = tafb.parent 
-							WHERE (tds.schedule_date = '{to}'){conditions}
+							WHERE (tds.schedule_date <= '{to}'){conditions}
 							GROUP BY  ta.item_code  ;""")
 
 	return data
