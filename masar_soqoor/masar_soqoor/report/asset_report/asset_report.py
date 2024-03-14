@@ -27,7 +27,7 @@ def get_data(filters):
 	data = frappe.db.sql(f"""SELECT  ta.name, ta.docstatus, ta.asset_name, ta.item_code, ta.asset_category,
 					  				 ta.location, ta.purchase_date, tafb.depreciation_start_date, tafb.total_number_of_depreciations, 
 									 ta.status, ta.item_name, ta.is_existing_asset, ta.opening_accumulated_depreciation,
-					  				 ta.gross_purchase_amount, tds.depreciation_amount, tds.accumulated_depreciation_amount 
+					  				 ta.gross_purchase_amount, SUM(tds.depreciation_amount), tds.accumulated_depreciation_amount 
 							FROM tabAsset ta
 								INNER JOIN `tabDepreciation Schedule` tds on ta.name = tds.parent 
 								INNER JOIN `tabAsset Finance Book` tafb on ta.name = tafb.parent 
