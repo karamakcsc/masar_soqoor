@@ -6,7 +6,11 @@ frappe.ui.form.on("Delivery Note", "validate", function(frm, cdt, cdn) {
    frm.refresh_field();
 }
 });
-
+frappe.ui.form.on("Delivery Note","onload", function(frm) {
+   if (!frappe.user.has_role('System Manager')) {
+       frm.toggle_display("set_posting_time", false);
+   }
+});
 // frappe.ui.form.on('Delivery Note', {
 //     refresh: function(frm) {
 //         if (!frappe.user.has_role('System Manager')) {

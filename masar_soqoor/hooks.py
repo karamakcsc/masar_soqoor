@@ -100,7 +100,22 @@ doc_events = {
 		"validate": "masar_soqoor.custom.journal_entry.journal_entry.update_employee"
 		# "on_cancel": "method",
 		# "on_trash": "method"
-	}
+	},
+    "Sales Order": {
+		"on_submit": "masar_soqoor.custom.sales_order.sales_order.on_submit",
+		# "on_trash": "method"
+	}, 
+    "Sales Invoice": {
+		"on_submit": "masar_soqoor.custom.sales_invoice.sales_invoice.on_submit"
+		# "on_cancel": "method",
+		# "on_trash": "method"
+	},
+    "Delivery Note": {
+		"on_submit": "masar_soqoor.custom.delivery_note.delivery_note.on_submit"
+		# "on_cancel": "method",
+		# "on_trash": "method"
+	},
+    
 }
 doctype_js = {
    "Sales Invoice" : "custom/sales_invoice/sales_invoice.js",

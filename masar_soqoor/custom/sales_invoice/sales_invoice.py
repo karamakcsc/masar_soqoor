@@ -1,4 +1,4 @@
-import frappe 
+import frappe
 
 def on_submit(self , method):
     check_tax(self)
@@ -8,9 +8,9 @@ def on_submit(self , method):
 def check_tax(self):
     rates = frappe.db.sql("""
         SELECT tstac.rate , tstac.idx , tstac.charge_type 
-        FROM `tabDelivery Note` tdn 
-        INNER JOIN `tabSales Taxes and Charges` tstac ON  tdn.name = tstac.parent  
-        WHERE tdn.name = %s
+        FROM `tabSales Invoice` tsi 
+        INNER JOIN `tabSales Taxes and Charges` tstac ON  tsi.name = tstac.parent 
+        WHERE tsi.name = %s
     """ , (self.name) , as_dict = True )
     for rate in rates:
         if not rate.rate:

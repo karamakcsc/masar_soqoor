@@ -184,7 +184,9 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
     frm.toggle_display("shipping_rule", false);
     frm.toggle_display("payment_schedule_section", false);
     frm.toggle_display("time_sheet_list", false);
-    
+    ///////
+    frm.toggle_display("set_posting_time", false);
+
     
     var df=frappe.meta.get_docfield("Sales Invoice", "update_stock",frm.doc.name);
     df.read_only=1;
