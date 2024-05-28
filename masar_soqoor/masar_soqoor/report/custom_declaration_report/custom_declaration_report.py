@@ -31,7 +31,10 @@ def get_data(filters):
             tpi.custom_cus_dec_tax,
             tpi.base_total
         FROM `tabPurchase Invoice` tpi 
-        WHERE (tpi.posting_date BETWEEN %s AND %s) {conditions}
+        WHERE (tpi.posting_date BETWEEN %s AND %s)
+            tpi.tax_category in ('VAT_PI' , 'VAT_I') 
+            AND tpi.taxes_and_charges in ('VAT_PI' , 'VAT_I')
+            AND tpi.docstatus = 1  {conditions}
         ORDER BY tpi.posting_date DESC;
         """, (_from, to))
 
