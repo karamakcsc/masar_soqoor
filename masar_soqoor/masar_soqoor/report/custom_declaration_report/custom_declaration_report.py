@@ -34,8 +34,8 @@ FROM
     `tabPurchase Invoice` tpi 
 WHERE 
     (tpi.posting_date BETWEEN '{_from}' AND '{to}')
-    AND tpi.tax_category IN ('VAT_PI', 'VAT_I') 
-    AND tpi.taxes_and_charges IN ('VAT_PI', 'VAT_I')
+    AND (tpi.tax_category IN ('VAT_PI', 'VAT_I') 
+    OR tpi.taxes_and_charges IN ('VAT_PI', 'VAT_I'))
 
             AND tpi.docstatus = 1  {conditions}
         ORDER BY tpi.posting_date DESC;
