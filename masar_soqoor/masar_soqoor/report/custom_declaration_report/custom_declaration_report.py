@@ -18,24 +18,24 @@ def get_data(filters):
 
     data = frappe.db.sql(f"""
         SELECT
-    tpi.supplier,
-    tpi.posting_date,
-    tpi.reference_no,
-    tpi.supplier_name,
-    tpi.name,
-    tpi.custom_cus_dec_date,
-    tpi.custom_cus_dec_no,
-    tpi.custom_port_name,
-    tpi.custom_cus_dec_amount,
-    tpi.custom_cus_dec_fee,
-    tpi.custom_cus_dec_tax,
-    tpi.base_total
-FROM 
-    `tabPurchase Invoice` tpi 
-WHERE 
-    (tpi.posting_date BETWEEN '{_from}' AND '{to}')
-    AND (tpi.tax_category IN ('VAT_PI', 'VAT_I') 
-    OR tpi.taxes_and_charges IN ('VAT_PI', 'VAT_I'))
+            tpi.supplier,
+            tpi.posting_date,
+            tpi.reference_no,
+            tpi.supplier_name,
+            tpi.name,
+            tpi.custom_cus_dec_date,
+            tpi.custom_cus_dec_no,
+            tpi.custom_port_name,
+            tpi.custom_cus_dec_amount,
+            tpi.custom_cus_dec_fee,
+            tpi.custom_cus_dec_tax,
+            tpi.base_total
+        FROM 
+            `tabPurchase Invoice` tpi 
+        WHERE 
+            (tpi.posting_date BETWEEN '{_from}' AND '{to}')
+            AND (tpi.tax_category IN ('VAT_PI', 'VAT_I') 
+            OR tpi.taxes_and_charges IN ('VAT_PI', 'VAT_I'))
 
             AND tpi.docstatus = 1  {conditions}
         ORDER BY tpi.posting_date DESC;
