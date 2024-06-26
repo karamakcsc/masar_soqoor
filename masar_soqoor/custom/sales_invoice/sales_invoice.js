@@ -13,6 +13,18 @@ frappe.ui.form.on('Sales Invoice', {
       // Remove the "Print" option from the menu
       frm.page.clear_menu();
     }
+  },
+  setup: function(frm) {
+    if (!frm.doc.ksa_einv_qr && !frm.doc.custom_qr_code_attach && frm.doc.docstatus ==1){
+      // Remove the "Print" option from the menu
+      frm.page.clear_menu();
+    }
+  },
+  onload: function(frm) {
+    if (!frm.doc.ksa_einv_qr && !frm.doc.custom_qr_code_attach && frm.doc.docstatus ==1){
+      // Remove the "Print" option from the menu
+      frm.page.clear_menu();
+    }
   }
 });
 
