@@ -3,8 +3,6 @@ import frappe
 def on_submit(self , method):
     check_tax(self)
 
-
-
 def check_tax(self):
     rates = frappe.db.sql("""
         SELECT tstac.rate , tstac.idx , tstac.charge_type 

@@ -107,7 +107,7 @@ doc_events = {
 	}, 
     "Sales Invoice": {
 		"on_submit": "masar_soqoor.custom.sales_invoice.sales_invoice.on_submit"
-		# "on_cancel": "method",
+		# "validate": "masar_soqoor.custom.sales_invoice.sales_invoice.validate"
 		# "on_trash": "method"
 	},
     "Delivery Note": {
@@ -115,6 +115,10 @@ doc_events = {
 		# "on_cancel": "method",
 		# "on_trash": "method"
 	},
+	"File": {
+        # "before_udpate": "masar_soqoor.custom.file.on_update",
+        "on_trash": "masar_soqoor.custom.file.file.on_trash"
+    },
     
 }
 doctype_js = {

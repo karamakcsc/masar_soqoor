@@ -2,14 +2,14 @@
 
 frappe.ui.form.on('Sales Invoice', {
 	refresh(frm) {
-	    if (frappe.user_roles.indexOf("Sales Invoice") ==-1 && !frm.doc.ksa_einv_qr && frm.doc.docstatus < 3) {
+	    if (frappe.user_roles.indexOf("Sales Invoice") ==-1 && !frm.doc.ksa_einv_qr && !frm.doc.custom_qr_code_attach && frm.doc.docstatus < 3) {
 	        $("button[data-original-title=Print]").hide();
 	 
            }     
 	}
 });frappe.ui.form.on('Sales Invoice', {
   refresh: function(frm) {
-    if (!frm.doc.ksa_einv_qr && frm.doc.docstatus ==1){
+    if (!frm.doc.ksa_einv_qr && !frm.doc.custom_qr_code_attach && frm.doc.docstatus ==1){
       // Remove the "Print" option from the menu
       frm.page.clear_menu();
     }
@@ -148,6 +148,7 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
             frm.remove_custom_button('Sales Order', 'Get Items From');
             frm.remove_custom_button('Quality Inspection(s)', 'Create');
             frm.remove_custom_button('Create');
+            frm.remove_custom_button('Duplicate');
         }, 10);
     }
 }
