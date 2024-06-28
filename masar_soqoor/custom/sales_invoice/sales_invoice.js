@@ -135,7 +135,7 @@ frappe.ui.form.on("Sales Invoice", {
 frappe.ui.form.on("Sales Invoice","onload", function(frm) {
 
     if (frappe.user.has_role('Sales User')) {
-      if(frm.doc.docstatus !=1){
+      if(frm.doc.docstatus === 0 ){
 
       var df=frappe.meta.get_docfield("Sales Invoice", "payment_type",frm.doc.name);
       df.read_only=1;
