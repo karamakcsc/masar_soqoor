@@ -1,30 +1,24 @@
-//////////////////////////////////////////////
-
 frappe.ui.form.on('Sales Invoice', {
-	refresh(frm) {
-	    if (frappe.user_roles.indexOf("Sales Invoice") ==-1 && !frm.doc.ksa_einv_qr && !frm.doc.custom_qr_code_attach && frm.doc.docstatus < 3) {
-	        $("button[data-original-title=Print]").hide();
-	 
-           }     
-	}
-});frappe.ui.form.on('Sales Invoice', {
-  refresh: function(frm) {
-    if (!frm.doc.ksa_einv_qr && !frm.doc.custom_qr_code_attach && frm.doc.docstatus ==1){
-      // Remove the "Print" option from the menu
-      frm.page.clear_menu();
-    }
+  refresh(frm) {
+      if ( 
+        !frm.doc.custom_qr_code_attach && 
+        frm.doc.docstatus === 1) {
+          $("button[data-original-title='Print']").hide();
+      }
   },
-  setup: function(frm) {
-    if (!frm.doc.ksa_einv_qr && !frm.doc.custom_qr_code_attach && frm.doc.docstatus ==1){
-      // Remove the "Print" option from the menu
-      frm.page.clear_menu();
-    }
+  setup(frm) {
+      if (
+          !frm.doc.custom_qr_code_attach && 
+          frm.doc.docstatus === 1) {
+          frm.page.clear_menu();
+      }
   },
-  onload: function(frm) {
-    if (!frm.doc.ksa_einv_qr && !frm.doc.custom_qr_code_attach && frm.doc.docstatus ==1){
-      // Remove the "Print" option from the menu
-      frm.page.clear_menu();
-    }
+  onload(frm) {
+      if (
+          !frm.doc.custom_qr_code_attach && 
+          frm.doc.docstatus === 1) {
+          frm.page.clear_menu();
+      }
   }
 });
 
