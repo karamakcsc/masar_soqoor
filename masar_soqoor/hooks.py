@@ -131,7 +131,8 @@ doctype_js = {
    "Customer" : "custom/customer/customer.js",
    "Stock Entry" : "custom/stock_entry/stock_entry.js",
    "Item" : "custom/item/item.js",
-   "Sales Order": "custom/sales_order/sales_order.js"
+   "Sales Order": "custom/sales_order/sales_order.js",
+   "Purchase Receipt": "custom/purchase_receipt/purchase_receipt.js"
  }
 
 # Scheduled Tasks

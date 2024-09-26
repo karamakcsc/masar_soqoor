@@ -62,7 +62,7 @@ frappe.ui.form.on("Sales Invoice", {
 
 frappe.ui.form.on("Sales Invoice Item", "refresh", function(frm, cdt, cdn) {
   var d = locals[cdt][cdn];
-  if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('System Manager') && frappe.user.has_role('Stock User')) {
+  if (frappe.user.has_role('Showroom User') && !frappe.user.has_role('Warehouse-User2') && !frappe.user.has_role('System Manager') && frappe.user.has_role('Stock User')) {
     if(frm.doc.docstatus !=1){
     cur_frm.set_value('warehouse', 'Showroom - SATC')
      cur_frm.refresh_field();
@@ -107,22 +107,22 @@ frappe.ui.form.on("Sales Invoice", {
 
 
 
-  frappe.ui.form.on('Sales Invoice', {
-    onload: function (frm, cdt, cdn) {
-        if (!frappe.user.has_role('System Manager')) {
-            cur_frm.fields_dict['items'].grid.wrapper.find('.btn-open-row').hide();
-            cur_frm.fields_dict['taxes'].grid.wrapper.find('.btn-open-row').hide();
-            frm.get_field('items').grid.cannot_add_rows = true;
-        }
-    },
-    refresh: function (frm, cdt, cdn) {
-        if (!frappe.user.has_role('System Manager')) {
-            cur_frm.fields_dict['items'].grid.wrapper.find('.btn-open-row').hide();
-            cur_frm.fields_dict['taxes'].grid.wrapper.find('.btn-open-row').hide();
-            frm.get_field('items').grid.cannot_add_rows = true;
-        }
-    }
-});
+//   frappe.ui.form.on('Sales Invoice', {
+//     onload: function (frm, cdt, cdn) {
+//         if (!frappe.user.has_role('System Manager')) {
+//             cur_frm.fields_dict['items'].grid.wrapper.find('.btn-open-row').hide();
+//             cur_frm.fields_dict['taxes'].grid.wrapper.find('.btn-open-row').hide();
+//             frm.get_field('items').grid.cannot_add_rows = true;
+//         }
+//     },
+//     refresh: function (frm, cdt, cdn) {
+//         if (!frappe.user.has_role('System Manager')) {
+//             cur_frm.fields_dict['items'].grid.wrapper.find('.btn-open-row').hide();
+//             cur_frm.fields_dict['taxes'].grid.wrapper.find('.btn-open-row').hide();
+//             frm.get_field('items').grid.cannot_add_rows = true;
+//         }
+//     }
+// });
 
 
 
@@ -224,3 +224,21 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
     
   }
 });
+
+
+// frappe.ui.form.on('Sales Invoice', {
+//     onload: function (frm, cdt, cdn) {
+//         if ( !frappe.user.has_role('System Manager')) {
+//             cur_frm.fields_dict['payments'].grid.wrapper.find('.btn-open-row').hide();
+//             cur_frm.fields_dict['taxes'].grid.wrapper.find('.btn-open-row').hide();
+//             frm.get_field('payments').grid.cannot_add_rows = true;
+//         }
+//     },
+//     refresh: function (frm, cdt, cdn) {
+//         if (!frappe.user.has_role('System Manager')) {
+//             cur_frm.fields_dict['payments'].grid.wrapper.find('.btn-open-row').hide();
+//             cur_frm.fields_dict['payments'].grid.wrapper.find('.btn-open-row').hide();
+//             frm.get_field('payments').grid.cannot_add_rows = true;
+//         }
+//     }
+// });

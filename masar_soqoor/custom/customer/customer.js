@@ -1,5 +1,5 @@
 frappe.ui.form.on("Customer", "onload", function(frm) {
-    if (!frappe.user.has_role('System Manager')) {
+    if (frappe.user.has_role('Showroom User') && (frappe.user.has_role('Sales User'))) {
         var df_customer_group = frappe.meta.get_docfield("Customer", "customer_group", frm.doc.name);
         df_customer_group.read_only = 1;
 
@@ -23,7 +23,7 @@ frappe.ui.form.on("Customer", "onload", function(frm) {
 });
 
 frappe.ui.form.on("Customer", "onload", function(frm) {
-    if (!frappe.user.has_role('System Manager')) {
+    if (frappe.user.has_role('Showroom User') && (frappe.user.has_role('Sales User'))) {
         var df_customer_group = frappe.meta.get_docfield("Customer", "customer_group", frm.doc.name);
         df_customer_group.read_only = 1;
 
