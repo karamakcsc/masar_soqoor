@@ -73,3 +73,25 @@ frappe.ui.form.on("Stock Entry", "onload", function(frm) {
         frm.refresh_fields();
     }
 });
+
+
+//////// Hide Basic Rate When Type is Transfer /////////
+frappe.ui.form.on('Stock Entry', {
+    onload: function(frm) {
+        if (!frappe.user.has_role('System Manager') ){
+            if (frm.doc.stock_entry_type === "Material Transfer") {
+                frm.get_field('items').grid.toggle_display('basic_rate', false);
+                frm.get_field('items').grid.toggle_display('valuation_rate', false);
+            }
+        }
+    },
+    stock_entry_type: function(frm) {
+        if (!frappe.user.has_role('System Manager') ){
+            if (frm.doc.stock_entry_type === "Material Transfer") {
+                console.log("TYUIK");
+                frm.get_field('items').grid.toggle_display('basic_rate', false);
+                frm.get_field('items').grid.toggle_display('valuation_rate', false);
+            }
+        }
+    }
+});

@@ -1,0 +1,39 @@
+{
+ "add_total_row": 1,
+ "columns": [],
+ "creation": "2024-10-07 10:45:08.210184",
+ "disabled": 1,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "soqoor",
+ "letterhead": null,
+ "modified": "2024-10-29 12:31:43.954600",
+ "modified_by": "Administrator",
+ "module": "Masar Soqoor",
+ "name": "Stock Balance - Soqoor",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Stock Ledger Entry",
+ "report_name": "Stock Balance - Soqoor",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Stock User"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Showroom User"
+  },
+  {
+   "role": "Sales User"
+  },
+  {
+   "role": "All"
+  }
+ ]
+}
