@@ -1,5 +1,5 @@
 frappe.ui.form.on("Stock Entry", "onload", function(frm) {
-    if (!frappe.user.has_role('System Manager') || frappe.user.has_role('Manufacturing Manager') ) {
+    if (!frappe.user.has_role('System Manager') || !frappe.user.has_role('Manufacturing Manager') ) {
         var df_customer_group = frappe.meta.get_docfield("Stock Entry", "from_warehouse", frm.doc.name);
         df_customer_group.read_only = 1;
         var df_customer_group = frappe.meta.get_docfield("Stock Entry", "to_warehouse", frm.doc.name);
