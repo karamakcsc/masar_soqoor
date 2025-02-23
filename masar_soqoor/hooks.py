@@ -251,10 +251,9 @@ fixtures = [
 				"Purchase Invoice-custom_cus_dec_fee",
                 "Purchase Invoice-custom_cus_dec_tax",
                 "Purchase Invoice-custom_column_break_erius",
-                "Vehicle-custom_naming_series"
-
-
-                  ]
+                "Vehicle-custom_naming_series",
+                "Company-custom_establishment_number"
+			]
         ]
     ]}
 ]

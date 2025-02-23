@@ -1,26 +1,26 @@
-frappe.ui.form.on('Sales Invoice', {
-  refresh(frm) {
-      if ( 
-        !frm.doc.custom_qr_code_attach && 
-        frm.doc.docstatus === 1) {
-          $("button[data-original-title='Print']").hide();
-      }
-  },
-  setup(frm) {
-      if (
-          !frm.doc.custom_qr_code_attach && 
-          frm.doc.docstatus === 1) {
-          frm.page.clear_menu();
-      }
-  },
-  onload(frm) {
-      if (
-          !frm.doc.custom_qr_code_attach && 
-          frm.doc.docstatus === 1) {
-          frm.page.clear_menu();
-      }
-  }
-});
+// frappe.ui.form.on('Sales Invoice', {
+//   refresh(frm) {
+//       if ( 
+//         !frm.doc.custom_qr_code_attach && 
+//         frm.doc.docstatus === 1) {
+//           $("button[data-original-title='Print']").hide();
+//       }
+//   },
+//   setup(frm) {
+//       if (
+//           !frm.doc.custom_qr_code_attach && 
+//           frm.doc.docstatus === 1) {
+//           frm.page.clear_menu();
+//       }
+//   },
+//   onload(frm) {
+//       if (
+//           !frm.doc.custom_qr_code_attach && 
+//           frm.doc.docstatus === 1) {
+//           frm.page.clear_menu();
+//       }
+//   }
+// });
 
 
 frappe.ui.form.on("Sales Invoice", {
