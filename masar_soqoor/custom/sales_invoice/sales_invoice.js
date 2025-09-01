@@ -1,62 +1,40 @@
-// frappe.ui.form.on('Sales Invoice', {
-//   refresh(frm) {
-//       if ( 
-//         !frm.doc.custom_qr_code_attach && 
-//         frm.doc.docstatus === 1) {
-//           $("button[data-original-title='Print']").hide();
+
+
+
+// frappe.ui.form.on("Sales Invoice", {
+//   payment_type: function(frm) {
+//       if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User')) {
+//         if(frm.doc.docstatus !=1){
+//           if (frm.doc.payment_type === 'Cash') {
+//               frm.set_value('is_pos', 1);
+//               frm.set_value('pos_profile','Standard');
+//           } else {
+//               frm.set_value('is_pos', 0);
+//               frm.set_value('payment_type',"On Account")
+//           }
+//           var df=frappe.meta.get_docfield("Sales Invoice", "is_return",frm.doc.name);
+//             df.read_only=1;
+//           frm.refresh_fields();
 //       }
+//     }
 //   },
-//   setup(frm) {
-//       if (
-//           !frm.doc.custom_qr_code_attach && 
-//           frm.doc.docstatus === 1) {
-//           frm.page.clear_menu();
-//       }
-//   },
-//   onload(frm) {
-//       if (
-//           !frm.doc.custom_qr_code_attach && 
-//           frm.doc.docstatus === 1) {
-//           frm.page.clear_menu();
-//       }
+//   onload: function(frm) {
+//     if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User')) {
+//       if(frm.doc.docstatus !=1){
+//         if (frm.doc.payment_type === 'Cash') {
+//             frm.set_value('is_pos', 1);
+//             frm.set_value('pos_profile','Standard');
+//         } else {
+//             frm.set_value('is_pos', 0);
+//             frm.set_value('payment_type',"On Account")
+//         }
+//         var df=frappe.meta.get_docfield("Sales Invoice", "is_return",frm.doc.name);
+//         df.read_only=1;
+//         frm.refresh_fields();
+//     }
 //   }
+// }
 // });
-
-
-frappe.ui.form.on("Sales Invoice", {
-  payment_type: function(frm) {
-      if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User')) {
-        if(frm.doc.docstatus !=1){
-          if (frm.doc.payment_type === 'Cash') {
-              frm.set_value('is_pos', 1);
-              frm.set_value('pos_profile','Standard');
-          } else {
-              frm.set_value('is_pos', 0);
-              frm.set_value('payment_type',"On Account")
-          }
-          var df=frappe.meta.get_docfield("Sales Invoice", "is_return",frm.doc.name);
-            df.read_only=1;
-          frm.refresh_fields();
-      }
-    }
-  },
-  onload: function(frm) {
-    if (frappe.user.has_role('Showroom User') && frappe.user.has_role('Stock User')) {
-      if(frm.doc.docstatus !=1){
-        if (frm.doc.payment_type === 'Cash') {
-            frm.set_value('is_pos', 1);
-            frm.set_value('pos_profile','Standard');
-        } else {
-            frm.set_value('is_pos', 0);
-            frm.set_value('payment_type',"On Account")
-        }
-        var df=frappe.meta.get_docfield("Sales Invoice", "is_return",frm.doc.name);
-        df.read_only=1;
-        frm.refresh_fields();
-    }
-  }
-}
-});
 
 
 
@@ -107,39 +85,20 @@ frappe.ui.form.on("Sales Invoice", {
 
 
 
-//   frappe.ui.form.on('Sales Invoice', {
-//     onload: function (frm, cdt, cdn) {
-//         if (!frappe.user.has_role('System Manager')) {
-//             cur_frm.fields_dict['items'].grid.wrapper.find('.btn-open-row').hide();
-//             cur_frm.fields_dict['taxes'].grid.wrapper.find('.btn-open-row').hide();
-//             frm.get_field('items').grid.cannot_add_rows = true;
-//         }
-//     },
-//     refresh: function (frm, cdt, cdn) {
-//         if (!frappe.user.has_role('System Manager')) {
-//             cur_frm.fields_dict['items'].grid.wrapper.find('.btn-open-row').hide();
-//             cur_frm.fields_dict['taxes'].grid.wrapper.find('.btn-open-row').hide();
-//             frm.get_field('items').grid.cannot_add_rows = true;
-//         }
+// frappe.ui.form.on("Sales Invoice","onload", function(frm) {
+
+//     if (frappe.user.has_role('Sales User')) {
+//       if(frm.doc.docstatus === 0 ){
+
+//       var df=frappe.meta.get_docfield("Sales Invoice", "payment_type",frm.doc.name);
+//       df.read_only=1;
+
+//       frm.set_value('update_stock', 0);
+//       frm.set_value('payment_type',"On Account");
+//       frm.set_value('is_pos', 0);
+//       }
 //     }
-// });
-
-
-
-frappe.ui.form.on("Sales Invoice","onload", function(frm) {
-
-    if (frappe.user.has_role('Sales User')) {
-      if(frm.doc.docstatus === 0 ){
-
-      var df=frappe.meta.get_docfield("Sales Invoice", "payment_type",frm.doc.name);
-      df.read_only=1;
-
-      frm.set_value('update_stock', 0);
-      frm.set_value('payment_type',"On Account");
-      frm.set_value('is_pos', 0);
-      }
-    }
-  });
+//   });
   
 
   frappe.ui.form.on('Sales Invoice', {
@@ -226,19 +185,59 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
 });
 
 
-// frappe.ui.form.on('Sales Invoice', {
-//     onload: function (frm, cdt, cdn) {
-//         if ( !frappe.user.has_role('System Manager')) {
-//             cur_frm.fields_dict['payments'].grid.wrapper.find('.btn-open-row').hide();
-//             cur_frm.fields_dict['taxes'].grid.wrapper.find('.btn-open-row').hide();
-//             frm.get_field('payments').grid.cannot_add_rows = true;
-//         }
-//     },
-//     refresh: function (frm, cdt, cdn) {
-//         if (!frappe.user.has_role('System Manager')) {
-//             cur_frm.fields_dict['payments'].grid.wrapper.find('.btn-open-row').hide();
-//             cur_frm.fields_dict['payments'].grid.wrapper.find('.btn-open-row').hide();
-//             frm.get_field('payments').grid.cannot_add_rows = true;
-//         }
-//     }
-// });
+
+frappe.ui.form.on("Sales Invoice", {
+  onload: function(frm) {
+    apply_sales_user_rules(frm);
+    apply_showroom_stock_rules(frm);
+  },
+
+  payment_type: function(frm) {
+    apply_showroom_stock_rules(frm);
+  },
+
+  is_pos: function(frm) {
+    apply_sales_user_rules(frm);
+    apply_showroom_stock_rules(frm);
+  }
+});
+
+
+function apply_sales_user_rules(frm) {
+  if (!frappe.user.has_role("Sales User")) return;
+
+  if (frm.doc.docstatus === 0) {
+    frm.set_df_property("payment_type", "read_only", 1);
+
+    frm.set_value("update_stock", 0);
+    frm.set_value("payment_type", "On Account");
+    frm.set_value("is_pos", 0);
+  }
+}
+
+
+function apply_showroom_stock_rules(frm) {
+  if (!(frappe.user.has_role("Showroom User") && frappe.user.has_role("Stock User"))) return;
+
+  if (frm.doc.docstatus !== 1) {
+  
+    if (frm.doc.payment_type === "Cash") {
+      frm.set_value("is_pos", 1);
+      frm.set_value("pos_profile", "Standard");
+    } else {
+      frm.set_value("is_pos", 0);
+      frm.set_value("payment_type", "On Account");
+    }
+
+   
+    if (frm.doc.is_pos === 1) {
+      frm.set_value("payment_type", "Cash");
+      frm.set_value("pos_profile", "Standard");
+    } else {
+      frm.set_value("payment_type", "On Account");
+    }
+
+
+    frm.set_df_property("is_return", "read_only", 1);
+  }
+}
